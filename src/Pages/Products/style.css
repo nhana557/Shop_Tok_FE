@@ -1,0 +1,38 @@
+.my-bag{
+    overflow-x: hidden;
+}
+.btn-home{
+    height: 45px;
+    margin-top: 40px;
+}
+.my-products{
+    width: 68%;
+    margin-left: 20px;
+    margin-top: 40px;
+}
+.card-custom{
+    
+    margin-left: 30px;
+    width: 100%;
+}
+@media screen and (max-width: 1230px){
+    .my-products{
+        width: 95%;
+        margin-top: 70px;
+    }
+}
+@media screen and (max-width: 576px){
+    .profil-form{
+        margin-left: -15px !important;
+    }
+    .nav-search{
+        margin-left: 0px !important;
+    }
+    .my-products{
+        margin-top: 190px !important;
+        margin-left: -24px !important;
+    }
+    .table-responsive{
+        font-size: 10px;
+    }
+}
