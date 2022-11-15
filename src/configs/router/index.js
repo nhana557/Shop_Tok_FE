@@ -13,6 +13,7 @@ import RequireAuth from "../../components/base/RequireAuth";
 import MyProducts from "../../Pages/MyProducts";
 import Swal from "sweetalert2";
 import {  useSelector } from "react-redux";
+import PageBag from "../../Pages/BagPage";
 
 const Role = ({ children }) => {
    const { user } = useSelector((state) => state.auth);
@@ -44,6 +45,14 @@ function Router() {
             </RequireAuth>
           }
         />
+        {/* <Route
+          path="/Bag"
+          element={
+              <PageBag />
+            // <RequireAuth>
+            // </RequireAuth>
+          }
+        /> */}
         <Route
           path="/Checkout"
           element={

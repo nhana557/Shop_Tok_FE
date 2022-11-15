@@ -125,7 +125,6 @@ const MyProducts = () => {
               <div className="text-center m-auto  beban ">
                 <h2>Sorry... Data yang anda cari tidak ada</h2>
               </div>
-              
             )}
           </div>
         </div>

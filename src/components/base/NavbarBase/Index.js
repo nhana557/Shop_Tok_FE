@@ -103,7 +103,7 @@ const NavbarBase = ({ onChange, onClick, src, srcCart }) => {
                   </button>
                 </Link>
                 <img src={bell} alt="" className="icon-cart ms-3 mb-2" />
-                <img src={mail} alt="" className="icon-cart ms-3 mb-2" />
+                <img src={mail} alt="" className="icon-cart ms-2 me-4 mb-2" />
               </form>
               <DropdownButton
                 align="end"
