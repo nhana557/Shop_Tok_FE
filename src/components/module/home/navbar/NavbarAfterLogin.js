@@ -120,8 +120,8 @@ const NavbarAfterLogin = () => {
               <Link to="/checkout">
               <img src={cart} alt="" className="icon-cart mb-2" />
               </Link>
-              <img src={bell} alt="" className="icon-cart ms-3 mb-2" />
-              <img src={mail} alt="" className="icon-cart ms-3 mb-2" />
+              <img src={bell} alt="" className="icon-cart ms-2 mb-2" />
+              <img src={mail} alt="" className="icon-cart ms-2 me-4 mb-2" />
               <Link to="/profil">
                 <img src={user?.image ? user.image : Profil} alt="img" width={40} height={40} className="rounded-circle" />
               </Link>
