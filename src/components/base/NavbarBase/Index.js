@@ -13,7 +13,6 @@ import "./style.css"
 import "../../module/home/StyleHome.css"
 import ModalFilter from "../modal/ModalFilter";
 const NavbarBase = ({ onChange, onClick, src, srcCart }) => {
-  // const { user } = useSelector((state) => state.auth);
   const [user, setUser] = useState()
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -102,8 +101,8 @@ const NavbarBase = ({ onChange, onClick, src, srcCart }) => {
                     </span> */}
                   </button>
                 </Link>
-                <img src={bell} alt="" className="icon-cart ms-3 mb-2" />
-                <img src={mail} alt="" className="icon-cart ms-2 me-4 mb-2" />
+                <img src={bell} alt="" className="icon-cart ms-2 mb-2" />
+                <img src={mail} alt="" className="icon-cart ms-2 me-2 mb-2" />
               </form>
               <DropdownButton
                 align="end"
