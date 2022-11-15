@@ -30,8 +30,11 @@ body{
   margin-top: 40px;
   margin-left: 0px !important;
 }
-.image,.image-text{
+.image{
   margin-top: 70px;
+}
+.image-text{
+  margin-top: 80px;
 }
 .title-dashboard{
   font-weight: 800;

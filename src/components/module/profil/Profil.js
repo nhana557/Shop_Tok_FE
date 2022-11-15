@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./profil.css";
 import profil from "../../../assets/image/profilBig.png";
 import home from "../../../assets/image/seling-product/home (2) 1.png";
@@ -19,6 +19,8 @@ const Profil = ({
   children,
 }) => {
   const { user } = useSelector((state) => state.auth);
+  const [users, setUser] = useState(user.image)
+  console.log(user.image)
   useEffect(() => {
     datas();
   }, []);
@@ -26,15 +28,15 @@ const Profil = ({
   const datas = async () => {
     const token = localStorage.getItem("token");
     const response = await axios.get(
-      `${process.env.REACT_APP_API_BACKEND}users/profile`,
+      `${process.env.REACT_APP_API_BACKEND}auth/profile`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }
     );
-    console.log(response.data.data.fullname);
-    // setDate_of_brith(response.data.data[0].date_of_brith);
+    console.log(response.data.data);
+    setUser(response.data.data);
   };
   console.log(user);
   return (
@@ -92,14 +94,13 @@ const Profil = ({
                 className="rounded-circle"
                 width={75}
                 height={70}
-                src={ profil}
+                src={users.image ? users.image :  profil}
                 alt="img"
               />
             </td>
-            <td className="align-middle float-start ms-3 image-text">
-              <p className="post mb-2">{user.fullname}</p>
-              <p>{user.email}</p>
-              
+            <td className="align-middle float-start image-text">
+              <p className="ms-2 mb-1">{users.fullname}</p>
+              <p className="ms-2">{users.email}</p>
             </td>
           </tbody>
         </table>

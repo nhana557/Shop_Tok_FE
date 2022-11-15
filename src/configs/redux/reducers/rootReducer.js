@@ -1,5 +1,6 @@
 import {combineReducers} from 'redux'
 import {userReducer} from './userReducer'
+import { Profile } from './userReducer'
 // import { UpdateUserReducer } from "./userReducer";
 import {
   productsReducer,
@@ -14,6 +15,7 @@ import { cartReducer, todosReducer } from "./cartReducer";
 import { categoryReducer } from "./categoryReducer";
 import bagReducer from "./bagReducer";
 const rootReducer = combineReducers({
+  // profile: Profile,
   auth: userReducer,
   Createproducts: CreateproductsReducer,
   allProducts: productsReducer,

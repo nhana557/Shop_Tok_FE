@@ -17,6 +17,9 @@
   .nav-search{
     width: 220% !important;
   }
+  .rounded-circle{
+    object-fit: cover;
+  }
   .filter{
     margin-right: 200px !important;
     margin-left: 15px !important;

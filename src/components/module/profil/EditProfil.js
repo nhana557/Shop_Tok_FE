@@ -13,19 +13,17 @@ import { useNavigate } from "react-router-dom";
 import { updateUser } from "../../../configs/redux/actions/userAction";
 
 const EditProfil = () => {
-  // const { user } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.auth);
- const [image, setImage] = useState("");
-  const [imagePreview, setImagePreview] = useState(image);
+  const [image, setImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
   const [name, setName] = useState(user.fullname);
   const [email, setEmail] = useState(user.email);
   const [phonenumber, setPhonenumber] = useState(+628000000);
   const [gender, setGender] = useState("");
-  const [date_of_brith, setDate_of_brith] = useState("");
   const onImageUpload = (e) => {
     const file = e.target.files[0];
     setImage(file);
-    setImagePreview(URL.createObjectURL());
+    setImagePreview(URL.createObjectURL(file));
     console.log(URL.createObjectURL(file));
   };
 
@@ -33,17 +31,22 @@ const EditProfil = () => {
   const navigate = useNavigate();
   const onSubmit = (e) => {
     const token = localStorage.getItem("token");
+    Swal.fire({
+      title: 'Now loading',
+      allowEscapeKey: false,
+      allowOutsideClick: false,
+      showConfirmButton: false,
+    })
     e.preventDefault();
     const data = new FormData();
     data.append("phonenumber", phonenumber);
-    data.append("name", name);
+    data.append("fullname", name);
     data.append("gender", gender);
     data.append("email", email);
-    data.append("date_of_brith", date_of_brith);
     data.append("image", image);
     e.preventDefault();
     axios
-      .put(`${process.env.REACT_APP_API_BACKEND}users/updateProfil`, data, {
+      .put(`${process.env.REACT_APP_API_BACKEND}auth/updateImg`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -57,7 +60,12 @@ const EditProfil = () => {
           icon: "success",
           title: "Berhasil mengupdate users",
           text: `username : ${name}`,
-        });
+        }).then(res =>{
+          if(res.isConfirmed){
+            window.location.reload()
+            datas();
+          }
+        })
       })
       .catch((err) => {
         Swal.fire({
@@ -68,29 +76,28 @@ const EditProfil = () => {
         console.log(err);
       });
   };
-  useEffect(() => {
-    datas();
-  }, []);
+
   const datas = async () => {
     const token = localStorage.getItem("token");
     const response = await axios.get(
-      `${process.env.REACT_APP_API_BACKEND}users/profile`,
+      `${process.env.REACT_APP_API_BACKEND}auth/profile`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }
     );
-    console.log(response.data.data[0]);
-    setName(response.data.data[0].name);
-    setImagePreview(response.data.data[0].date_of_brith || avatar);
-    setImage(response.data.data[0].date_of_brith || avatar);
-    setDate_of_brith(response.data.data[0].image);
-    setPhonenumber(response.data.data[0].phonenumber || null);
-    setGender(response.data.data[0].gender);
-    setEmail(response.data.data[0].email);
+    const result = response.data.data
+    setName(result.fullname);
+    setImagePreview(result.image);
+    setImage(result.image || avatar);
+    setPhonenumber(result.phonenumber || phonenumber);
+    setGender(result.gender);
+    setEmail(result.email);
   };
-  console.log(gender);
+  useEffect(() =>{
+    datas()
+  }, [])
   return (
     <div className="my-bag">
       <div className="row">
@@ -184,7 +191,7 @@ const EditProfil = () => {
                           className="form-check-label text-secondary ms-2"
                           htmlFor="flexRadioDefault1"
                         >
-                          laki-laki
+                          <span className="fs-6">laki-laki</span> 
                         </label>
                         <input
                           className="form-check-input ms-4"
@@ -197,11 +204,12 @@ const EditProfil = () => {
                         <label
                           className="form-check-label text-secondary ms-2"
                           htmlFor="flexRadioDefault1 "
-                        />
-                        perempuan
+                        >
+                         <span className="fs-6">perempuan</span>
+                        </label>
                       </div>
                     </div>
-                    <div className="mb-4 row">
+                    {/* <div className="mb-4 row">
                       <label
                         htmlFor="inputPassword"
                         className="col-sm-3 col-form-label text-end text-form"
@@ -217,10 +225,10 @@ const EditProfil = () => {
                           type="date"
                         />
                       </div>
-                    </div>
+                    </div> */}
                     <div className="mb-3 row">
                       <div className="col-sm-9">
-                        <button type="submit" className="btn btn-submit bg-success">
+                        <button type="submit" className="btn btn-submit bg-success" onClick={onSubmit}>
                           Save
                         </button>
                       </div>
@@ -228,7 +236,7 @@ const EditProfil = () => {
                   </div>
                   <div className="col-sm-3 image-profil text-center">
                     <img
-                      src={avatar}
+                      src={imagePreview ? imagePreview : avatar}
                       className="rounded-circle imagas-profile"
                       alt=""
                     />

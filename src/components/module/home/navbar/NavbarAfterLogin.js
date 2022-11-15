@@ -15,7 +15,9 @@ import { useNavigate } from "react-router-dom";
 
 const NavbarAfterLogin = () => {
   const navigate = useNavigate();
-
+  // const { user } = useSelector((state) => state.auth);
+  const [user, setUser] = useState()
+  console.log(user)
   const [search, setSearch] = useState([]);
   const handleSearch = () => {
       navigate({
@@ -26,30 +28,20 @@ const NavbarAfterLogin = () => {
   useEffect(() => {
     datas();
   }, []);
-
- 
-
   const datas = async () => {
     const token = localStorage.getItem("token");
     const response = await axios.get(
-      `${process.env.REACT_APP_API_BACKEND}profile`,
+      `${process.env.REACT_APP_API_BACKEND}auth/profile`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }
     );
-    console.log(response.data.data.username);
+    console.log(response)
+    setUser(response.data.data);
     
   };
-    //  const [search, setSearch] = useState("");
-    //  let [searchParams, setSearchParams] = useSearchParams({});
-    //  const handleSearch = () => {
-    //    setSearchParams({ keyword: search });
-    // //  };
-    //  useEffect(() => {
-    //    console.log(searchParams.get("keyword"));
-    //  }, [searchParams]);
   return (
     <div>
       <nav className="navbar navbar-expand-md navbar-light fixed-top mb-4">
@@ -131,7 +123,7 @@ const NavbarAfterLogin = () => {
               <img src={bell} alt="" className="icon-cart ms-3 mb-2" />
               <img src={mail} alt="" className="icon-cart ms-3 mb-2" />
               <Link to="/profil">
-                <img src={Profil} alt="" className="rounded-circle" />
+                <img src={user?.image ? user.image : Profil} alt="img" width={40} height={40} className="rounded-circle" />
               </Link>
             </form>
            
@@ -159,7 +151,7 @@ const NavbarAfterLogin = () => {
             <img src={mail} alt="" className="icon-cart m-auto" />
           </button>
           <Link to="/profil">
-            <img src={Profil} alt="" className="rounded-circle" />
+            <img src={Profil} alt=""  className="rounded-circle" />
           </Link>
         </div>
       </nav>

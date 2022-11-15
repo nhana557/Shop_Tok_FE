@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React,{useEffect, useState} from 'react'
 import { Link } from "react-router-dom";
 import "../StyleHome.css";
 import NavbarBase from "../../../base/NavbarBase/Index"
@@ -15,9 +15,10 @@ import { signOut } from "../../../../configs/redux/actions/userAction";
 
 
 const Navbar = ({ onChange }) => {
-const { user } = useSelector((state) => state.auth);
+// const { user } = useSelector((state) => state.auth);
+const [user, setUser] = useState()
+console.log(user)
 const dispatch = useDispatch();
-console.log(user);
   const handleSignOut = () => {
    localStorage.removeItem("id");
   dispatch(signOut());
@@ -30,14 +31,14 @@ useEffect(() => {
 const datas = async () => {
   const token = localStorage.getItem("token");
   const response = await axios.get(
-    `${process.env.REACT_APP_API_BACKEND}users/profile`,
+    `${process.env.REACT_APP_API_BACKEND}auth/profile`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     }
   );
-  console.log(response.data.data.fullname);
+  setUser(response.data.data);
 };
   return (
     <div>
@@ -71,10 +72,10 @@ const datas = async () => {
             <Dropdown className="d-inline mx-2">
               <Dropdown.Toggle variant="light" id="dropdown-basic">
                 <img
-                  src={ Profil}
+                  src={user.image ? user.image :  Profil}
                   alt=""
-                  width={25}
-                  height={25}
+                  width={100}
+                  height={100}
                   className="rounded-circle"
                 />
               </Dropdown.Toggle>

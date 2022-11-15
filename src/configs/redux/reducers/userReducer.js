@@ -5,8 +5,19 @@ const initialState = {
         role: '',
         password : ''
     },
+    // data: [],
     isLoading: false
 }
+
+// export const Profile = (state = initialState, {type, payload}) =>{
+//    switch(type) {
+//     case "GET_USER_SUCCESS": 
+//     return {
+//       ...state,
+//       data: payload
+//     }
+//    }
+// }
 
 export const userReducer = (state = initialState, action) => {
 

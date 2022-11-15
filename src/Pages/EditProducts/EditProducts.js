@@ -99,6 +99,7 @@ const ModalEdit = ({
               placeholder="photo"
               name="photo"
               onChange={handleUpload}
+              multiple
             />
             <input
               className="form-control mt-3"

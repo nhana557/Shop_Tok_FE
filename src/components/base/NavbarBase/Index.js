@@ -13,7 +13,8 @@ import "./style.css"
 import "../../module/home/StyleHome.css"
 import ModalFilter from "../modal/ModalFilter";
 const NavbarBase = ({ onChange, onClick, src, srcCart }) => {
-  const { user } = useSelector((state) => state.auth);
+  // const { user } = useSelector((state) => state.auth);
+  const [user, setUser] = useState()
   const dispatch = useDispatch();
   const navigate = useNavigate();
   console.log(user);
@@ -45,14 +46,14 @@ const NavbarBase = ({ onChange, onClick, src, srcCart }) => {
   const datas = async () => {
     const token = localStorage.getItem("token");
     const response = await axios.get(
-      `${process.env.REACT_APP_API_BACKEND}profile`,
+      `${process.env.REACT_APP_API_BACKEND}auth/profile`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }
     );
-    console.log(response.data.data.username);
+    setUser(response.data.data);
     
   };
   return (
@@ -108,7 +109,7 @@ const NavbarBase = ({ onChange, onClick, src, srcCart }) => {
                 align="end"
                 title={
                   <img
-                    src={Profil}
+                    src={user.image ? user.image : Profil}
                     alt=""
                     width={35}
                     height={35}

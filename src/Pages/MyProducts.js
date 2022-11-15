@@ -113,7 +113,7 @@ const MyProducts = () => {
                 
                 <div className="col" key={item.id}>   
                   <Card
-                    src={item.photo}
+                    src={item.photo[0]}
                     to={`/detail/${item.id}`}
                     titleName={item.name}
                     price={item.price}
