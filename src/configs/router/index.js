@@ -45,14 +45,14 @@ function Router() {
             </RequireAuth>
           }
         />
-        {/* <Route
+        <Route
           path="/Bag"
           element={
               <PageBag />
             // <RequireAuth>
             // </RequireAuth>
           }
-        /> */}
+        />
         <Route
           path="/Checkout"
           element={

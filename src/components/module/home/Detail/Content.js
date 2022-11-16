@@ -65,8 +65,8 @@ const Content = () => {
             <div className="col-lg-5">
               <div className="galleries">
                 <div className="galleries-container">
-                <img src={products?.photo ? products.photo[0] : products.photo} 
-                className="w-100 " alt="" id="jumbo"/>
+                    <img src={products?.photo ? products.photo[0] : products.photo} 
+                      className="w-100 " alt="" id="jumbo"/>
                 </div>
                 <div className="thumb mt-3 text-center">
                   {products?.photo?.map((image, index) =>{

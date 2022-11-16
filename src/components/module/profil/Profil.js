@@ -88,17 +88,17 @@ const Profil = ({
   <div className="col-lg-4 mt-2 select-profil">
       <div className="profil-avatar avatar">
         <table>
-          <tbody>
-            <td className=" align-middle float-start image">
+          <tbody className="image">
+            <td className="align-middle float-start image ">
               <img
                 className="rounded-circle"
-                width={75}
-                height={70}
+                width={70}
+                height={65}
                 src={users.image ? users.image :  profil}
                 alt="img"
               />
             </td>
-            <td className="align-middle float-start image-text">
+            <td className="align-middle image-text">
               <p className="ms-2 mb-1">{users.fullname}</p>
               <p className="ms-2">{users.email}</p>
             </td>

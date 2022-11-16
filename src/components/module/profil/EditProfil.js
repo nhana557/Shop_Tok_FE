@@ -110,7 +110,7 @@ const EditProfil = () => {
           imgTheree={shoping}
         />
         <div className="col-lg-7 profil-form">
-          <div className="card mt-5">
+          <div className="card mt-5 ms-5">
             <div className="card-body">
               <h3 className="title-profil">My Profile</h3>
               <p className="sub-profil text-secondary">

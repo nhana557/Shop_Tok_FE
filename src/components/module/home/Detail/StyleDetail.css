@@ -118,6 +118,10 @@ line-height: 16px;
   padding: 5px;
   margin-left: 5px;
 }
+.galleries-container > img{
+  width : 400px;
+  height: 400px;
+}
 
 
 .start{

@@ -14,55 +14,55 @@ import { Link } from "react-router-dom";
 import Button from "../../base/Button/Button";
 
 const Bag = () => {
-  const { cart } = useSelector((state) => state.bag);
-  console.log(cart);
-  const navigate = useNavigate();
-  const token = localStorage.getItem("token");
-  const dispatch = useDispatch();
-  const [qty, setQty] = useState(0);
-  let totalHarga = 0;
-  for (let i = 0; i < cart.length; i++) {
-    totalHarga += cart[i].price * cart[i].qty;
-  }
+  // const { cart } = useSelector((state) => state.bag);
+  // console.log(cart);
+  // const navigate = useNavigate();
+  // const token = localStorage.getItem("token");
+  // const dispatch = useDispatch();
+  // const [qty, setQty] = useState(0);
+  // let totalHarga = 0;
+  // for (let i = 0; i < cart.length; i++) {
+  //   totalHarga += cart[i].price * cart[i].qty;
+  // }
 
-  const addQty = async (id) => {
-    try {
-      console.log(token);
-      await axios.put(`${process.env.REACT_APP_API_BACKEND}/cart/add/${id}`);
-      setQty(1);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  console.log(qty);
-  const deleteCart = async (id) => {
-    try {
-      await axios.delete(`${process.env.REACT_APP_API_BACKEND}/cart/${id}`, {
-        "content-type": "multipart/form-data",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setQty(1);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const addQty = async (id) => {
+  //   try {
+  //     console.log(token);
+  //     await axios.put(`${process.env.REACT_APP_API_BACKEND}/cart/add/${id}`);
+  //     setQty(1);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  // console.log(qty);
+  // const deleteCart = async (id) => {
+  //   try {
+  //     await axios.delete(`${process.env.REACT_APP_API_BACKEND}/cart/${id}`, {
+  //       "content-type": "multipart/form-data",
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
+  //     setQty(1);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  const MinQty = (id) => {
-    axios
-      .put(`${process.env.REACT_APP_API_BACKEND}/cart/decrease/${id}`)
-      .then(() => {
-        setQty(1);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-  useEffect(() => {
-    dispatch(getCart());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [qty]);
+  // const MinQty = (id) => {
+  //   axios
+  //     .put(`${process.env.REACT_APP_API_BACKEND}/cart/decrease/${id}`)
+  //     .then(() => {
+  //       setQty(1);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
+  // useEffect(() => {
+  //   dispatch(getCart());
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [qty]);
   return (
     <div className="container bag-my">
       <h3 className="title-bag">My Bag</h3>
@@ -78,7 +78,7 @@ const Bag = () => {
                         <p className="select-item ms-4">
                           Select all items{" "}
                           <span className="text-secondary">
-                            ({cart.length} items selected)
+                            {/* ({cart.length} items selected) */}
                           </span>{" "}
                         </p>
                         <input
@@ -87,16 +87,18 @@ const Bag = () => {
                           value=""
                           id="flexCheckDefault"
                         />
-                        <span className="checkmak"></span>
+                        <span className="checkmak ms-2 mt-2"></span>
                       </label>
                     </div>
                   </td>
-                  <td className="delete text-right">Delete</td>
+                  <td className="d-flex justify-content-end">
+                    <button className="btn delete">Delete</button>
+                  </td>
                 </tbody>
               </table>
             </div>
           </div>
-          {cart.length > 0 && (
+          {/* {cart.length > 0 && (
             <ul>
               {cart.map((item, index) => (
                 <div className="card mb-3 " key={index}>
@@ -176,20 +178,20 @@ const Bag = () => {
               ))}
             </ul>
           )}
-          {cart.length < 1 && <h1>Sorry Data Empty</h1>}
+          {cart.length < 1 && <h1>Sorry Data Empty</h1>} */}
         </div>
         <Total
           onClick={() => {
-            navigate("/checkout");
+            // navigate("/checkout");
           }}
           totalPrice="Total Price"
-          priceBag={<FormatRupiah value={totalHarga} />}
+          priceBag={<FormatRupiah value={'10100'} />}
         >
           {" "}
           <Link to="/Checkout">
             <Button
               className="mt-3 w-100 btn btn-checkout"
-              title=" Select payment"
+              title=" Checkout"
             ></Button>
           </Link>
         </Total>
