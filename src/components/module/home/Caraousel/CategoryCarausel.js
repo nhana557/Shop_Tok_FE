@@ -79,11 +79,11 @@ const CategoryCarausel = () => {
                 <img src={pants} className="slide-size"/>
               </div>
             </SwiperSlide>
-            <SwiperSlide >
+            {/* <SwiperSlide >
               <div className="item mt-5">
                 <img src={short} className="slide-size"/>
               </div>
-            </SwiperSlide>
+            </SwiperSlide> */}
           </div>
         </Swiper>
           {/* <OwlCarousel className="owl-theme" loop margin={10} autoWidth={false} items={3} autoplayTimeout={2000} autoplay={true}>

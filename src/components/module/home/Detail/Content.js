@@ -26,6 +26,7 @@ const Content = () => {
         console.log(error);
       });
   }
+  // fetch()
   useEffect(() => {
     fetch()
   }, []);
