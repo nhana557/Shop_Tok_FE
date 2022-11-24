@@ -13,14 +13,14 @@ import Page404 from "../../Pages/Page404/Page404";
 import RequireAuth from "../../components/base/RequireAuth";
 import MyProducts from "../../Pages/MyProducts";
 import Swal from "sweetalert2";
-import {  useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import PageBag from "../../Pages/BagPage";
 import Category from "../../Pages/Category";
 import StoreProfile from "../../Pages/store";
 
 const Role = ({ children }) => {
-   const { user } = useSelector((state) => state.auth);
-   console.log(user)
+  const { user } = useSelector((state) => state.auth);
+  console.log(user)
   if (user.role !== "seller") {
     Swal.fire("anda bukan seller ?", "silahkan daftar seller dulu", "question");
     return <Navigate to="/profil" replace />;
@@ -51,37 +51,37 @@ function Router() {
         <Route
           path="/category/:id"
           element={
-            <Category/>
+            <Category />
           }
         />
         <Route
           path="/Selling"
           element={
-              <CreateProduct />
-            // <RequireAuth>
-            //     <Role>
-            //   </Role>
-              
-            // </RequireAuth>
+            <RequireAuth>
+              <Role>
+                <CreateProduct />
+              </Role>
+
+            </RequireAuth>
           }
         />
         <Route
           path="/store"
           element={
-              <StoreProfile />
-            // <RequireAuth>
-            //     <Role>
-            //   </Role>
-              
-            // </RequireAuth>
+            <RequireAuth>
+              <Role>
+                <StoreProfile />
+              </Role>
+
+            </RequireAuth>
           }
         />
         <Route
           path="/Bag"
           element={
+            <RequireAuth>
               <PageBag />
-            // <RequireAuth>
-            // </RequireAuth>
+            </RequireAuth>
           }
         />
         <Route
