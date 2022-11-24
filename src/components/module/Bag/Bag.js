@@ -58,6 +58,7 @@ const Bag = () => {
       console.log(ID)
       const result = await axios.delete(`${process.env.REACT_APP_API_BACKEND}cart/${ID}`);
       console.log(result)
+      dispatch(getCart())
       // setQty(1);
 
     } catch (error) {
@@ -192,7 +193,7 @@ const Bag = () => {
                           <button
                             onClick={() => {
                               deleteCart(item.id);
-                              dispatch(getCart())
+                              
                             }}
                             className="btn btn-light text-danger "
                           >
