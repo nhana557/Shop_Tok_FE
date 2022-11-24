@@ -16,9 +16,7 @@ Shop id adalah sebuah aplikasi berbasis website yang memudahkan orang untuk mend
 - [ReactJS](https://reactjs.org/)
 - [Redux](https://redux.js.org/)
 - [Bootstrap](https://getbootstrap.com/)
-- [Socket.IO](https://socket.io/)
 - [Axios](https://github.com/axios/axios)
-- [Moment](https://momentjs.com/)
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -46,22 +44,22 @@ REACT_APP_API_BACKEND=YOUR_API_URL
 ## Screenshot
 
 ### Login
-<img src="./readme/1. belanja 1.png" />
+<img src="./readme/belanja 1.png" />
 
 ### Register
-<img src="./readme/2. belanja 2.png" />
+<img src="./readme/belanja 2.png" />
 
 ### Home
-<img src="./readme/3. belanja 3.png" />
+<img src="./readme/belanja 3.png" />
 
 ### Edit Profile
-<img src="./readme/4. belanja 4.png" />
+<img src="./readme/belanja 4.png" />
 
 ### Chat
-<img src="./readme/5. belanja 5.png" />
+<img src="./readme/belanja 5.png" />
 
 ### Detail User
-<img src="./readme/6. belanja 6.png" />
+<img src="./readme/belanja 6.png" />
 
 <!-- RELATED PROJECT -->
 ## Related Project
