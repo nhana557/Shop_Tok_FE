@@ -105,8 +105,8 @@ const Checkout = () => {
           </Button>
           <Button variant="primary" onClick={() =>{
             handleSubmit()
-            handleClose()
             fetchAddress()
+            handleClose()
           }}>
             Save Changes
           </Button>
