@@ -19,7 +19,7 @@ export const getCart =  () => async (dispatch) => {
   }
 }
 
-export const addMycart = (data, navigate) => async(dispatch) =>{
+export const addMycart = (data, navigate, buy) => async(dispatch) =>{
   try {
     // const token = localStorage.getItem('token')
     dispatch({type: "GET_MYCART_PENDING"})
@@ -30,7 +30,11 @@ export const addMycart = (data, navigate) => async(dispatch) =>{
             },
     });
     console.log(cart)
-    navigate("/Bag");
+    if(buy === true){
+      navigate("/checkout")
+    }else{
+      navigate("/Bag");
+    }
     dispatch({type: "GET_MYCART", payload: {cart}})
   } catch (error) {
     console.log(error);

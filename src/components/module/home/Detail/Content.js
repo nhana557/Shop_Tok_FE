@@ -32,14 +32,14 @@ const Content = () => {
   useEffect(() => {
     fetch()
   }, []);
-  const handleAddBag = async (detailProductId, navigate) => {
+  const handleAddBag = async (detailProductId, navigate, buy = false) => {
     const id = localStorage.getItem('id')
     const data = {
       product_id: detailProductId,
       user_id: id,
     };
 
-    dispatch(addMycart(data, navigate))
+    dispatch(addMycart(data, navigate, buy))
     // ;
   };
    const [count, setCount] = useState(1);
@@ -163,9 +163,13 @@ const Content = () => {
                     {/* </Link> */}
                   </div>
                   <div className="col-lg-5 ms-1">
-                    <Link to="/Checkout">
-                      <button className="btn btn-buy btn-event">Buy Now</button>
-                    </Link>
+                    {/* <Link to="/Checkout"> */}
+                      <button className="btn btn-buy btn-event"
+                      onClick={() =>{
+                        handleAddBag(products.id, navigate, true)
+                      }}
+                      >Buy Now</button>
+                    {/* </Link> */}
                   </div>
                 </div>
               </div>

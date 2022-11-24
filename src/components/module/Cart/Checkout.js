@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Total from "../Total/Total";
 import "../home/StyleHome.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FormatRupiah } from "@arismun/format-rupiah";
 import { Modal, Button, Form } from "react-bootstrap";
 import Select from "react-select";
+import { getCart } from "../../../configs/redux/actions/bagAction";
 import axios from "axios";
 
 const Checkout = () => {
   const [show, setShow] = useState(false);
   const { cart } = useSelector((state) => state.bag);
   const [payment, setPayment] = useState([])
+  const dispatch = useDispatch()
   const [address, setAddress] = useState([])
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -18,7 +20,7 @@ const Checkout = () => {
   const [formAddress, setFormAddress] = useState({
     address: address === undefined ? "" : address.address
   })
-  console.log(address)
+  console.log(cart)
 
   const handleChange = (e) =>{
     e.preventDefault();
@@ -70,6 +72,7 @@ const Checkout = () => {
     totalHarga += cart[i].price * cart[i].qty;
   }
   useEffect(() =>{
+    dispatch(getCart())
     fetchPayment()
     fetchAddress()
   }, [])
