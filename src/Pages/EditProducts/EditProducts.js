@@ -50,7 +50,7 @@ const ModalEdit = ({
     <Fragment>
       <button
         className="btn btn-dark text-light"
-        style={{ marginRight: "10px" }}
+        style={{ marginRight: "10px", width: "80%", padding: "0px", fontSize: "14px" }}
         onClick={handleShow}
       >
         Edit
@@ -97,7 +97,7 @@ const ModalEdit = ({
               className="form-control mt-3"
               type="file"
               placeholder="photo"
-              name="photo"
+              // name="photo"
               onChange={handleUpload}
               multiple
             />
@@ -109,7 +109,7 @@ const ModalEdit = ({
               value={data.description}
               onChange={handleChange}
             />
-            <input
+            {/* <input
               className="form-control mt-3"
               type="text"
               placeholder="category_id"
@@ -124,13 +124,13 @@ const ModalEdit = ({
               name="transaksi_id"
               value={data.transaksi_id}
               onChange={handleChange}
-            />
+            /> */}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button type="submit" id="button-addon2" title="Register" onClick={handleClose}>
+          <Button type="submit" id="button-addon2" title="Register" onClick={handleSubmit}>
             Update
           </Button>
         </Modal.Footer>

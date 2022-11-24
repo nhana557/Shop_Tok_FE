@@ -17,6 +17,7 @@ const Register = ({ label, ...props }) => {
     password: "",
     fullname: "",
     role: "seller",
+    Storename: ''
   });
 
        if (auth === user) {
@@ -71,6 +72,19 @@ if (auth.id) return navigate("/login");
               className="form-control mb-3"
             />
             <label htmlFor="floatingInput">Name</label>
+          </div>
+          <div className="form-floating">
+            <input
+              id="floatingInput"
+              name="Storename"
+              type="text"
+              {...props}
+              value={user.Storename}
+              onChange={handleChange}
+              placeholder="Name"
+              className="form-control mb-3"
+            />
+            <label htmlFor="floatingInput">Store Name</label>
           </div>
           <div className="form-floating">
             <input

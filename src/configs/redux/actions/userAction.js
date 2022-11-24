@@ -19,7 +19,9 @@ export const loginUser = (dataForm, navigate)=> async(dispatch)=>{
       }
       console.log(users);
       const token = result.data.data.token
-        localStorage.setItem("token", token);
+      const id = result.data.data.id
+      localStorage.setItem("token", token);
+        localStorage.setItem("id", id);
         localStorage.setItem("refreshToken", user.refreshToken);
         dispatch({type: 'USER_LOGIN_SUCCESS', payload: user})
 
@@ -53,7 +55,7 @@ export const signUp = (dataForm, navigate) => async (dispatch) => {
       `${process.env.REACT_APP_API_BACKEND}auth/register`,
       dataForm
     );
-    const user = result.data.data;
+    const user = result.data;
     console.log(user)
     localStorage.setItem("token", user.token);
     localStorage.setItem("refreshToken", user.refreshToken);

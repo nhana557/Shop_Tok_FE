@@ -73,7 +73,7 @@ const datas = async () => {
               <Dropdown.Toggle variant="light" id="dropdown-basic">
                 <img
                   src={user.image ? user.image :  Profil}
-                  alt=""
+                  alt="profile"
                   width={100}
                   height={100}
                   className="rounded-circle"
@@ -87,7 +87,6 @@ const datas = async () => {
                       onClick={() => handleSignOut()}
                       type="button"
                     >
-                      {" "}
                       logout
                     </button>
                   </Link>

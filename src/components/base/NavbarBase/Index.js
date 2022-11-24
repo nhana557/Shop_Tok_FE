@@ -56,7 +56,7 @@ const NavbarBase = ({ onChange, onClick, src, srcCart }) => {
     
   };
   return (
-    <nav className="navbar navbar-expand-md navbar-light fixed-top mb-4 nav">
+    <nav className="navbar navbar-expand-md navbar-light">
       <div className="container">
         <Link to="/home">
           <img src={src} alt="" className="" />

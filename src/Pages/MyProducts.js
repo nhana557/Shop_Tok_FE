@@ -109,8 +109,7 @@ const MyProducts = () => {
            </div>
           <div className="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-4 g-3">
             {products.length > 0 ? (
-              products.map((item) => [
-                
+              products.map((item) => (
                 <div className="col" key={item.id}>   
                   <Card
                     src={item.photo[0]}
@@ -120,7 +119,7 @@ const MyProducts = () => {
                     merk={item.merk}
                   />
                 </div>
-              ])
+              ))
             ) : (
               <div className="text-center m-auto  beban ">
                 <h2>Sorry... Data yang anda cari tidak ada</h2>

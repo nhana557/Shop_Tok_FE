@@ -9,8 +9,10 @@ import './StyleDetail.css'
 import { addMycart } from "../../../../configs/redux/actions/bagAction";
 import {FormatRupiah} from "@arismun/format-rupiah"
 import axios from "axios"
+import { useDispatch } from "react-redux";
 
 const Content = () => {
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const { id } = useParams()
   const [products, setProducts] = useState([]);
@@ -31,13 +33,14 @@ const Content = () => {
     fetch()
   }, []);
   const handleAddBag = async (detailProductId, navigate) => {
-
+    const id = localStorage.getItem('id')
     const data = {
-      productId: detailProductId,
-      qty: 1,
+      product_id: detailProductId,
+      user_id: id,
     };
-    // dispatch()
-    addMycart(data, navigate);
+
+    dispatch(addMycart(data, navigate))
+    // ;
   };
    const [count, setCount] = useState(1);
    const handleSum = () => {
@@ -151,8 +154,8 @@ const Content = () => {
                       <button
                         className="btn btn-bag btn-event"
                         onClick={() => {
-                          console.log(products.data.id);
-                          handleAddBag(products.data.id, navigate);
+                          console.log(products.id);
+                          handleAddBag(products.id, navigate);
                         }}
                       >
                         Add bag

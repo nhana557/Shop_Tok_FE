@@ -4,7 +4,7 @@ import "./edit.css";
 import avatar from "../../../assets/image/profil-avatar.png";
 import Profil from "./Profil";
 import home from "../../../assets/image/user-profil.png";
-import pekage from "../../../assets/image/map-pin (3) 1.png";
+import pekage from "../../../assets/image/seling-product/package 1.png";
 import shoping from "../../../assets/image/clipboard 1 (1).png";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
@@ -99,8 +99,7 @@ const EditProfil = () => {
     datas()
   }, [])
   return (
-    <div className="my-bag">
-      <div className="row">
+      <div className="row container1">
         <Profil
           titleOne="My Account"
           titleTwo="My product"
@@ -109,8 +108,8 @@ const EditProfil = () => {
           imgTwo={pekage}
           imgTheree={shoping}
         />
-        <div className="col-lg-7 profil-form">
-          <div className="card mt-5 ms-5">
+        <div className="col-lg-9 profile-form pt-5">
+          <div className="card card-form">
             <div className="card-body">
               <h3 className="title-profil">My Profile</h3>
               <p className="sub-profil text-secondary">
@@ -258,7 +257,6 @@ const EditProfil = () => {
           </div>
         </div> 
       </div>
-    </div>
   );
 };
 

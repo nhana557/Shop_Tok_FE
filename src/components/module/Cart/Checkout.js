@@ -1,27 +1,81 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Total from "../Total/Total";
 import "../home/StyleHome.css";
 import { useSelector } from "react-redux";
 import { FormatRupiah } from "@arismun/format-rupiah";
 import { Modal, Button, Form } from "react-bootstrap";
+import Select from "react-select";
+import axios from "axios";
 
 const Checkout = () => {
   const [show, setShow] = useState(false);
-
+  const { cart } = useSelector((state) => state.bag);
+  const [payment, setPayment] = useState([])
+  const [address, setAddress] = useState([])
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const { cart } = useSelector((state) => state.bag);
+  const token = localStorage.getItem('token')
+  const [formAddress, setFormAddress] = useState({
+    address: address === undefined ? "" : address.address
+  })
+  console.log(address)
 
-
-  console.log(cart);
+  const handleChange = (e) =>{
+    e.preventDefault();
+    setFormAddress({
+      ...formAddress,
+      [e.target.name]: e.target.value
+    })
+  }
+  const handleSubmit = (e) =>{
+    // e.preventDefault();
+    if(address === undefined){
+      axios
+        .post(`${process.env.REACT_APP_API_BACKEND}address`, formAddress, {
+          headers: {
+            authorization: `Bearer ${token}`
+          }
+        }).then((res) => console.log(res))
+    }else{
+      axios
+        .put(`${process.env.REACT_APP_API_BACKEND}address`, formAddress, {
+          headers: {
+            authorization: `Bearer ${token}`
+          }
+        }).then((res) => console.log(res))
+    }
+  }
+  const fetchAddress = async() =>{
+    console.log(token)
+    const result = await axios.get(`${process.env.REACT_APP_API_BACKEND}address`,{
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    })
+    console.log(result.data.data)
+    setAddress(result.data.data[0])
+  }
+  const fetchPayment = async () => {
+    const api = await axios.get(
+      `${process.env.REACT_APP_API_BACKEND}payment`
+    );
+    const payments = api.data;
+    // console.log(categorys);
+    setPayment(payments);
+  };
   const { user } = useSelector((state) => state.auth);
+  console.log(user);
   let totalHarga = 0;
-  for (let i = 0; i < cart.length; i++) {
+  for(let i = 0; i < cart.length; i++) {
     totalHarga += cart[i].price * cart[i].qty;
   }
+  useEffect(() =>{
+    fetchPayment()
+    fetchAddress()
+  }, [])
   
   return (
-    <div className="container my-check">
+    <div className="container mt-5">
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
@@ -41,7 +95,7 @@ const Checkout = () => {
               controlId="exampleForm.ControlTextarea1"
             >
               <Form.Label>Example textarea</Form.Label>
-              <Form.Control as="textarea" rows={3} />
+              <Form.Control as="textarea" rows={3} name='address' onChange={handleChange}/>
             </Form.Group>
           </Form>
         </Modal.Body>
@@ -49,7 +103,11 @@ const Checkout = () => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={() =>{
+            handleSubmit()
+            handleClose()
+            fetchAddress()
+          }}>
             Save Changes
           </Button>
         </Modal.Footer>
@@ -60,17 +118,15 @@ const Checkout = () => {
         <div className="col-lg-8 pl-lg-0">
           <div className="card mb-3 ">
             <div className="card-body">
-              <h4>{user.name}</h4>
-              <p>
-                Jln Terusan Batu Bara Gang 5 No 51 RT 01 RW 09 Pandawangi
-                Kelurahan Blimbing Kota Malang
+              <h4 className="fw-bold">{user.fullname}</h4>
+              <p className="fs-5">
+                {address === undefined ? "" : address.address}
               </p>
               <button
                 className=" btn btn-address"
                 variant="primary"
                 onClick={handleShow}
               >
-                {/* <Modal/> */}
                 Choose another address
               </button>
             </div>
@@ -94,7 +150,7 @@ const Checkout = () => {
                       </span>
                     </td>
                     <td className="align-middle text-start">
-                      quantity : {item.qty}
+                      qty : {item.qty}
                     </td>
                     <td className="align-middle text-start text-white">
                       {/* { item.qty} */}
@@ -102,7 +158,7 @@ const Checkout = () => {
                     </td>
                     <td className="align-middle price">
                       {" "}
-                      <FormatRupiah value={item.price * item.qty} />
+                      <FormatRupiah value={item.price} />
                     </td>
                   </tbody>
                 </table>
@@ -119,17 +175,27 @@ const Checkout = () => {
           price="Free Ongkir"
         >
           <select
-           
-            className="form-select w-100 mt-1 mb-4 mt-5"
+            className="form-select w-100 mt-1 mb-4 mt-5 fw-bold"
           >
-            <option>Select Payment</option>
-            <option value="BRI">COD</option>
-            <option value="OVO">OVO</option>
+            <option className="fw-semibold">Select Payment</option>
+            {payment.map((res, index) =>{
+              console.log(res.paying)
+              return(
+                <option 
+                value={res.id} 
+                key={index}
+                className="fw-semibold"
+                >{res.paying}</option>
+              )
+            })
+
+            }
+            
+            {/* <option value="OVO">OVO</option>
             <option value="Mandiri">Akulaku</option>
-            <option value="BCA">BCA</option>
+            <option value="BCA">BCA</option> */}
           </select>
           <button
-           
             backgroundColor="#DB3022"
             color="white"
             borderRadius="25px"

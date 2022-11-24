@@ -43,8 +43,8 @@ const NavbarAfterLogin = () => {
     
   };
   return (
-    <div>
-      <nav className="navbar navbar-expand-md navbar-light fixed-top mb-4">
+    <div className="container">
+      <nav className="navbar navbar-expand-md navbar-light fixed-top">
         <div className="container">
           <Link to="/home">
             <img src={logo} alt="logo" className="" />
@@ -64,29 +64,6 @@ const NavbarAfterLogin = () => {
             className="collapse navbar-collapse ms-auto navbar-besic"
             id="navbarCollapse"
           >
-            {/* <ul className="navbar-nav mb-2 mb-md-0 w-50 me-auto">
-              <div className="input-group rounded nav-search">
-                <input
-                  type="search"
-                  className="form-control search-input"
-                  placeholder="Search"
-                  aria-label="Search"
-                  aria-describedby="search-addon"
-                  name="search"
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-                <span
-                  className="input-group-text search bg-light"
-                  id="search-addon"
-                >
-                  <i className="bi bi-search" onClick={handleSearch}></i>
-                </span>
-              </div>
-              <p>{searchParams.get("search")}</p>
-              <button className="btn btn-outline-light filter">
-                {/* <img src={filter} alt="filter" /> */}
-              {/* </button>
-            </ul>  */}
             <ul className="navbar-nav mb-2 mb-md-0  me-auto">
               <li>
                   <div className="input-group rounded nav-search">
@@ -123,7 +100,7 @@ const NavbarAfterLogin = () => {
               <img src={bell} alt="" className="icon-cart ms-2 mb-2" />
               <img src={mail} alt="" className="icon-cart ms-2 me-4 mb-2" />
               <Link to="/profil">
-                <img src={user?.image ? user.image : Profil} alt="img" width={40} height={40} className="rounded-circle" />
+                <img src={user?.image ? user.image : Profil} alt="profile" width={40} height={40} className="rounded-circle" />
               </Link>
             </form>
            
@@ -151,7 +128,7 @@ const NavbarAfterLogin = () => {
             <img src={mail} alt="" className="icon-cart m-auto" />
           </button>
           <Link to="/profil">
-            <img src={Profil} alt=""  className="rounded-circle" />
+            <img src={user?.image ? user.image : Profil} alt="profile"  className="rounded-circle" />
           </Link>
         </div>
       </nav>

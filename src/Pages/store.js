@@ -1,18 +1,18 @@
 import React from 'react'
 import Footer from '../components/module/home/footer/Footer'
 import Navbar from "../components/module/home/navbar/Navbar";
-import EditProfil from '../components/module/profil/EditProfil'
+import Store from '../components/module/profil/store';
 
-const Profil = () => {
+const StoreProfile = () => {
   return (
     <div>
       <Navbar />
-      <EditProfil />
-      <div className='fixed-bottom'>
+      <Store />
+      {/* <div className='fixed-bottom mt-5'> */}
         <Footer/>
-      </div>
+      {/* </div> */}
     </div>
   );
 }
 
-export default Profil
+export default StoreProfile

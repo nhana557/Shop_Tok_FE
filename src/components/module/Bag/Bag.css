@@ -1,10 +1,13 @@
 
 .bag-my{
-   margin-top: 90px;
+   margin-top: 0px;
 }
 .card-details {
   padding: 30px;
   border-radius: 11px;
+}
+.card-bag{
+    margin-left: -30px;
 }
 .delete{
     color: #DB3022;
@@ -98,7 +101,8 @@
 }
 
 .img-products{
-    border-radius: 3px;
+     border-radius: 20px !important;
+     margin-left: -35px;
      box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
      width: 100px;
      height: 100px;
@@ -125,10 +129,8 @@
      background-color: #aca2a2;
 }
 .max{
+    margin-left: -5px;
     border-radius: 50%;
-}
-.one{
-    margin-left: -500px !important;
 }
 .btn-checkout{
     background-color: #DB3022;
@@ -182,7 +184,6 @@ color: #222222;
    }
    .sub-post{
        font-size: 5px;
-       margin-top: -100px !important;
    }
    .min,.max{
        width: 10px;

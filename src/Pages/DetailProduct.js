@@ -14,7 +14,7 @@ const DetailProduct = () => {
 
   return (
     <div>
-      {user === undefined ?(
+      {user === undefined ? (
         <Navbar /> 
         ): (
         <NavbarAfterLogin />

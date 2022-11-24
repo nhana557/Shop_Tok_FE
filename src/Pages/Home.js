@@ -31,9 +31,9 @@ const Home = () => {
 
   return (
     <div>
-      {user === undefined ?(
+      {user.email === "" ? (
         <Navbar /> 
-        ): (
+        ) : (
         <NavbarAfterLogin />
       )}
       <Carausel />

@@ -6,6 +6,7 @@ import Login from "../../Pages/auth/Login";
 import Register from "../../Pages/auth/Register";
 import RegisterSeller from "../../Pages/auth/RegisterSeller";
 import ProductList from "../../Pages/Products/ProductList";
+import CreateProduct from "../../Pages/Products/createNewProduct";
 import Checkout from "../../Pages/Checkout";
 import Profil from "../../Pages/Profil";
 import Page404 from "../../Pages/Page404/Page404";
@@ -14,6 +15,8 @@ import MyProducts from "../../Pages/MyProducts";
 import Swal from "sweetalert2";
 import {  useSelector } from "react-redux";
 import PageBag from "../../Pages/BagPage";
+import Category from "../../Pages/Category";
+import StoreProfile from "../../Pages/store";
 
 const Role = ({ children }) => {
    const { user } = useSelector((state) => state.auth);
@@ -43,6 +46,34 @@ function Router() {
                 <ProductList />
               </Role>
             </RequireAuth>
+          }
+        />
+        <Route
+          path="/category/:id"
+          element={
+            <Category/>
+          }
+        />
+        <Route
+          path="/Selling"
+          element={
+              <CreateProduct />
+            // <RequireAuth>
+            //     <Role>
+            //   </Role>
+              
+            // </RequireAuth>
+          }
+        />
+        <Route
+          path="/store"
+          element={
+              <StoreProfile />
+            // <RequireAuth>
+            //     <Role>
+            //   </Role>
+              
+            // </RequireAuth>
           }
         />
         <Route

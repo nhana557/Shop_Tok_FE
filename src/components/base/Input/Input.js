@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-const Input = ({ id,className, ...props }) => {
+const Input = ({ id, className, ...props }) => {
   return (
     <div>
       <input
