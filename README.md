@@ -43,22 +43,22 @@ REACT_APP_API_BACKEND=YOUR_API_URL
 <!-- SCREENSHOT -->
 ## Screenshot
 
-### Login
+### Home
 <img src="./readme/belanja 1.png" />
 
-### Register
+### Detail Product
 <img src="./readme/belanja 2.png" />
 
-### Home
+###
 <img src="./readme/belanja 3.png" />
 
-### Edit Profile
+### Bag
 <img src="./readme/belanja 4.png" />
 
-### Chat
+### profile
 <img src="./readme/belanja 5.png" />
 
-### Detail User
+### Add Product
 <img src="./readme/belanja 6.png" />
 
 <!-- RELATED PROJECT -->
