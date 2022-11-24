@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from "react-router-dom";
 import "./style.css"
-const Card = ({src, to, titleName, price, merk}) => {
+const Card = ({src, to, titleName, price, merk, onClick}) => {
+  useEffect(() =>{
+    return onClick
+  }, [])
   return (
     <div className='card1'>
       <div className="card shadow-sm ">
         <img src={src} className="img-fluid img" alt="picture" />
         <div className="card-body">
-          <h5 className="card-title">
+          <h5 className="card-title" onClick={onClick}>
             <Link to={to}>{titleName}</Link>
           </h5>
           <p className="price">{price}</p>

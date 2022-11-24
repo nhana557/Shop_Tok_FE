@@ -3,10 +3,17 @@ import "../StyleHome.css";
 import axios from "axios";
 import Card from "../../../base/Card";
 import { FormatRupiah } from "@arismun/format-rupiah";
+import { useNavigate } from "react-router-dom";
 
 
 const Product = ({ title, subtitle }) => {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate()
+  
+  const navigation = (id) =>{
+    navigate(`/detail/${id}`)
+    window.location.reload();
+  }
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_BACKEND}products`)
@@ -31,6 +38,7 @@ const Product = ({ title, subtitle }) => {
             {products.map((item) => (
               <div className="col" key={item.id}>
                 <Card
+                  onClick={() => { return window.location.reload()}}
                   src={item.photo[0]}
                   to={`/detail/${item.id}`}
                   titleName={item.name}

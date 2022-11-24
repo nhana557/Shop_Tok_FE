@@ -12,6 +12,7 @@ export const getCart =  () => async (dispatch) => {
     );
     const cart = myCart.data
     console.log(cart)
+    console.log(myCart)
     dispatch({type: "GET_MYCART_SUCCESS", payload: {cart}})
   } catch (error) {
     console.log(error);
@@ -22,7 +23,7 @@ export const addMycart = (data, navigate) => async(dispatch) =>{
   try {
     // const token = localStorage.getItem('token')
     dispatch({type: "GET_MYCART_PENDING"})
-    console.log('halloo')
+    console.log('halloo', data)
     const cart =  await axios.post(`${process.env.REACT_APP_API_BACKEND}/cart`, data, {
         headers: {
             "Content-Type": "application/json",
@@ -30,7 +31,7 @@ export const addMycart = (data, navigate) => async(dispatch) =>{
     });
     console.log(cart)
     navigate("/Bag");
-    // dispatch({type: "GET_MYCART", payload: {cart}})
+    dispatch({type: "GET_MYCART", payload: {cart}})
   } catch (error) {
     console.log(error);
   }

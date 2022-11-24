@@ -16,7 +16,7 @@ import Button from "../../base/Button/Button";
 
 const Bag = () => {
   const { cart } = useSelector((state) => state.bag);
-  console.log(cart.length);
+  console.log(cart);
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const dispatch = useDispatch();
@@ -83,8 +83,7 @@ const Bag = () => {
   };
   useEffect(() => {
     dispatch(getCart());
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [qty]);
+  }, []);
   
   return (
     <Fragment>

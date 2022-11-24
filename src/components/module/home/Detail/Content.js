@@ -150,7 +150,7 @@ const Content = () => {
                     <button className="btn btn-chat btn-event">Chat</button>
                   </div>
                   <div className="col-lg-4 ms-1">
-                    <Link to="/Bag">
+                    {/* <Link to="/Bag"> */}
                       <button
                         className="btn btn-bag btn-event"
                         onClick={() => {
@@ -160,7 +160,7 @@ const Content = () => {
                       >
                         Add bag
                       </button>
-                    </Link>
+                    {/* </Link> */}
                   </div>
                   <div className="col-lg-5 ms-1">
                     <Link to="/Checkout">
