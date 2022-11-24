@@ -35,14 +35,14 @@ const Checkout = () => {
           headers: {
             authorization: `Bearer ${token}`
           }
-        }).then((res) => console.log(res))
+        }).then(() => fetchAddress())
     }else{
       axios
         .put(`${process.env.REACT_APP_API_BACKEND}address`, formAddress, {
           headers: {
             authorization: `Bearer ${token}`
           }
-        }).then((res) => console.log(res))
+        }).then(() => fetchAddress())
     }
   }
   const fetchAddress = async() =>{
