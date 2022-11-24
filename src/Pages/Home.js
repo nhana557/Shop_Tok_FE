@@ -31,10 +31,10 @@ const Home = () => {
 
   return (
     <div>
-      {user.email === "" ? (
-        <Navbar /> 
-        ) : (
+      {user.email ? (
         <NavbarAfterLogin />
+        ) : (
+          <Navbar /> 
       )}
       <Carausel />
       {/* <Category /> */}
