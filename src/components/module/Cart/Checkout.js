@@ -139,29 +139,29 @@ const Checkout = () => {
               <div className="table-responsive-sm">
                 <table className="table">
                   <tbody>
-                    <td className="align-middle text-center ">
+                    <td className="align-middle text-center ps-lg-1 ps-5 ">
                       <img
                         className="img-products"
                         src={item.image}
                         alt="checkout"
                       />
                     </td>
-                    <td className="align-middle">
+                    <td className="align-middle pe-5">
                       <p className="post mb-1">{item.name}</p>
-                      <span className="text-secondary sub-post">
+                      <span className="text-secondary ">
                         {item.merk}
                       </span>
                     </td>
-                    <td className="align-middle text-start">
+                    {/* <td className="align-middle text-start">
                       qty : {item.qty}
-                    </td>
-                    <td className="align-middle text-start text-white">
-                      {/* { item.qty} */}
-                      Lorem
-                    </td>
-                    <td className="align-middle price">
-                      {" "}
+                    </td> */}
+                    <td className="align-middle price float-end mt-3">
+                      <p>
+                      qty : {item.qty}
+                      </p>
+                      <h5>
                       <FormatRupiah value={item.price} />
+                      </h5>
                     </td>
                   </tbody>
                 </table>

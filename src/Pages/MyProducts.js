@@ -10,6 +10,8 @@ import { Dropdown } from "react-bootstrap";
 
 
 const MyProducts = () => {
+  const [counter, setCounter] = useState(1);
+
   // const [searchParams, setSearchParams] = useSearchParams([]);
   // const [products, setProduct] = useState([])
   // const getProducts = async () => {
@@ -37,7 +39,8 @@ const MyProducts = () => {
   const [sort, setSort] = useState("");
   const [search, setSearch] = useState("");
   const [products, setProducts] = useState([]);
- 
+  const [pagination, setPagination] = useState([])
+  console.log(pagination)
   const handleSort = (e) => {
     setSort(e.currentTarget.value);
    
@@ -51,24 +54,36 @@ const MyProducts = () => {
     )
     .then((response) => {
         setProducts(response.data.data);
-        console.log(response.data.data);
+        setPagination(response.data.pagination);
+        console.log(response.data.pagination);
       })
       .catch((error) => {
         console.log(error);
       });
   }
- 
-  // const handleSearch = (e) => {
-  //   e.preventDefault();
-  //   getData();
-  //   setSearchParams({
-  //     search,
-  //     sort
-  //   })
-  // };
- 
-//   console.log(search)
-//   console.log(sort)
+  const getPagination = async() =>{
+    try {
+      const result = await axios.get(`${process.env.REACT_APP_API_BACKEND}products?page=${counter}`)
+      setProducts(result.data.data)
+      setPagination(result.data.pagination)
+
+    } catch (error) {
+      console.log(error)
+    }
+}
+  const next = () => {
+    setCounter(
+      counter === pagination.totalPage ? pagination.totalPage : counter + 1
+      );
+      getPagination()
+      console.log(counter);
+    };
+    
+  const previos = () => {
+           setCounter(counter <= 1 ? 1 : counter - 1);
+           getPagination()
+       };
+    
  
   useEffect(() => {
     getData()
@@ -83,9 +98,8 @@ const MyProducts = () => {
       <Navbar />
       <div className="container">
         <div className="row">
-          <div className="products">
-            <h3 className="title">New</h3>
-            <p className="mt-5">My Products</p>
+          <div>
+            <p className="mt-4">My Products</p>
           </div>
           
           <div className="row row-cols-2 row-cols-sm-3 row-cols-md-5 ">
@@ -125,6 +139,17 @@ const MyProducts = () => {
                 <h2>Sorry... Data yang anda cari tidak ada</h2>
               </div>
             )}
+          </div>
+          <div className=" mt-5 d-flex justify-content-evenly">
+            <button className="btn btn-primary me-5 w-25" onClick={previos}>
+              Previos
+            </button>
+            <p className="mx-auto ">
+              {pagination.currentPage}/{pagination.totalPage}
+            </p>
+            <button className="btn btn-primary w-25" onClick={next}>
+              Next
+            </button>
           </div>
         </div>
       </div>

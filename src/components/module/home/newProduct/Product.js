@@ -28,7 +28,7 @@ const Product = ({ title, subtitle }) => {
 
   return (
     <div>
-      <div className="container">
+      <div className="container mb-5">
         <div className="row">
           <div className="products">
             <h3 className="title">{title}</h3>

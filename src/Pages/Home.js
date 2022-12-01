@@ -10,7 +10,7 @@ import "./style.css"
 import Carausel from "../components/module/home/Caraousel/Carausel";
 import NavbarAfterLogin from "../components/module/home/navbar/NavbarAfterLogin";
 import { useSelector } from "react-redux";
-import CategoryCarausel from "../components/module/home/Caraousel/CategoryCarausel";
+import CarauselCategory from "../components/module/home/Caraousel/CarauselCategory";
 
 
 
@@ -38,7 +38,7 @@ const Home = () => {
       )}
       <Carausel />
       {/* <Category /> */}
-      <CategoryCarausel/>
+      <CarauselCategory/>
       <div className="container">
         <div className="row">
           <div className="products">
@@ -61,7 +61,15 @@ const Home = () => {
         </div>
       </div>
       <Populer />
-      <Footer />
+      <div>
+      <footer className="py-3 bg-dark">
+        <div className="container">
+          <p className="m-0 text-center text-white">
+            Copyright &copy; Taryana 2022
+          </p>
+        </div>
+      </footer>
+    </div>
     </div>
   );
 };

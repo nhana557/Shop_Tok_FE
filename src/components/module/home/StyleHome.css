@@ -58,6 +58,9 @@ html {
   object-fit: cover !important;
 }
 
+.nav {
+  background: transparent !important;
+}
 .navbar {
   background-color: #fff;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
@@ -762,29 +765,19 @@ a:hover {
 }
 
 @media (max-width:576px) {
-  .navbar-nav {
-    width: 100% !important;
-    margin-left: -85px !important;
+   .navbar-nav {
+    display: none;
   }
 
-  .navbar-besic {
-    width: 100%;
+  .search{
+    margin-left: -30px;
+    width: 50px;
   }
-
-  .navbar-nav.filter {
-    width: 20px !important;
+  .search-input{
+    width: 100px !important;
   }
-
-  .end {
-    display: flex;
-    justify-content: end;
-    width: 90%;
-  }
-
-  .btn-event {
-    width: 130px !important;
-  }
-
+  
+  
   .slide {
     margin-top: 10px;
   }
@@ -800,9 +793,29 @@ a:hover {
     border-radius: 50px;
     border-right: 0px solid rgb(255, 255, 255);
   }
+  /* .navbar li input{
+    background: #000;
+    width: 25px !important;
+  } */
 
+  .filter1 {
+    margin-left: 335px;
+    margin-top: -65px;
+    border: 0.2px solid #9d9e9e;
+    border-radius: 12px !important;
+  }
   .caption {
     font-size: 30px;
+  }
+  .filter img{
+    margin-left: -5px;
+  }
+  .filter{
+    float: right;
+    margin: 5px;
+    width: 25%;
+      /* background-color: blue; */
+    margin-left: -70px !important;
   }
 
   .font-category {
@@ -810,15 +823,14 @@ a:hover {
   }
 
   .footer-dekstop {
-    display: inline-block;
+    display: none;
     width: 100%;
   }
+
 
   .footer-nav {
     display: inline-block;
     width: 100%;
-    /* position: absolute;
-  top: 0; */
   }
 
   .navbar {
@@ -835,7 +847,7 @@ a:hover {
   .nav-search {
     /* margin: 20px 0px 3px -80px;
      */
-    margin-left: -100px !important;
+    margin-left: -100px !important; 
     width: 85% !important;
   }
 
@@ -912,13 +924,5 @@ a:hover {
   .slide-response {
     /* margin-top: -30px; */
     margin-right: 30px;
-  }
-
-  .fixed-bottom {
-    display: none;
-  }
-
-  .navbar-nav {
-    margin-left: 10px !important;
   }
 }

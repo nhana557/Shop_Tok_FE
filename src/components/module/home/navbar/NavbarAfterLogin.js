@@ -6,26 +6,30 @@ import filter from "../../../../assets/image/filter.png";
 import Profil from "../../../../assets/image/profil.png";
 import bell from "../../../../assets/image/bell (1) 1.png";
 import mail from "../../../../assets/image/mail (3) 1.png";
-import cart from "../../../../assets/image/search.svg";
+import carts from "../../../../assets/image/search.svg";
 import { Link } from "react-router-dom";
-import axios from "axios"
+import axios from "axios";
 import ModalFilter from "../../../base/modal/ModalFilter";
 import { useNavigate } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
+import { getCart } from "../../../../configs/redux/actions/bagAction";
 
 const NavbarAfterLogin = () => {
   const navigate = useNavigate();
-  // const { user } = useSelector((state) => state.auth);
-  const [user, setUser] = useState()
-  console.log(user)
+  const dispatch = useDispatch();
+  const { cart } = useSelector((state) => state.bag)
+  console.log(cart);
+  const [user, setUser] = useState();
+  console.log(user);
   const [search, setSearch] = useState([]);
   const handleSearch = () => {
-      navigate({
+    navigate({
       pathname: "/myProducts",
-      search: "?search=" + search ,
+      search: "?search=" + search,
     });
   };
   useEffect(() => {
+    dispatch(getCart());
     datas();
   }, []);
   const datas = async () => {
@@ -38,12 +42,11 @@ const NavbarAfterLogin = () => {
         },
       }
     );
-    console.log(response)
+    console.log(response);
     setUser(response.data.data);
-    
   };
   return (
-    <div className="container">
+    <div>
       <nav className="navbar navbar-expand-md navbar-light fixed-top">
         <div className="container">
           <Link to="/home">
@@ -64,9 +67,9 @@ const NavbarAfterLogin = () => {
             className="collapse navbar-collapse ms-auto navbar-besic"
             id="navbarCollapse"
           >
-            <ul className="navbar-nav mb-2 mb-md-0  me-auto">
-              <li>
-                  <div className="input-group rounded nav-search">
+            <ul className="nav mb-2 mb-md-0 me-auto ms-4 rounded ">
+              <li >
+                <div className="input-group rounded nav-search">
                   <input
                     type="text"
                     className="form-control search-input"
@@ -82,54 +85,39 @@ const NavbarAfterLogin = () => {
                   >
                     <i className="bi bi-search" onClick={handleSearch}></i>
                   </span>
-              </div>
+                </div>
               </li>
               <li>
-              <button className="btn filter1">
-                <ModalFilter />
-            </button>
-
+                <button className="btn filter1">
+                  <ModalFilter />
+                </button>
               </li>
-            
-            
-          </ul>
-            <form className="ms-4  end">
-              <Link to="/checkout">
-              <img src={cart} alt="" className="icon-cart mb-2" />
+            </ul>
+            <form className="d-flex justify-content-center end ms-4 mt-3">
+              <Link to="/checkout" className="pt-2">
+                <img src={carts} alt="" className="icon-cart mb-2" />
+                <span className="position-absolute translate-middle badge rounded-pill bg-success">
+                  {cart.length}
+                </span>
               </Link>
-              <img src={bell} alt="" className="icon-cart ms-2 mb-2" />
+              <span className="pt-2">
+              <img src={bell} alt="" className="icon-cart ms-2 mb-2 " />
+              </span>
+              <span className="pt-2">
               <img src={mail} alt="" className="icon-cart ms-2 me-4 mb-2" />
+
+              </span>
               <Link to="/profil">
-                <img src={user?.image ? user.image : Profil} alt="profile" width={40} height={40} className="rounded-circle" />
+                <img
+                  src={user?.image ? user.image : Profil}
+                  alt="profile"
+                  width={50}
+                  height={50}
+                  className="rounded-circle"
+                />
               </Link>
             </form>
-           
           </div>
-        </div>
-      </nav>
-      <nav className="footer-nav bg-light text-center fixed-bottom">
-        <div className="content mt-2 mb-2">
-          <button
-            className="btn btn-light me-3"
-            data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop"
-          >
-            <i className="bi bi-search"></i>
-          </button>
-          <Link to="/checkout">
-            <button className="btn btn-light me-3">
-              <img src={cart} alt="" className="icon-cart m-auto" />
-            </button>
-          </Link>
-          <button className="btn btn-light me-3">
-            <img src={bell} alt="" className="icon-cart  m-auto" />
-          </button>
-          <button className="btn btn-light me-3">
-            <img src={mail} alt="" className="icon-cart m-auto" />
-          </button>
-          <Link to="/profil">
-            <img src={user?.image ? user.image : Profil} alt="profile"  className="rounded-circle" />
-          </Link>
         </div>
       </nav>
     </div>

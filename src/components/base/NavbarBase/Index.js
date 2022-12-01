@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "../../../configs/redux/actions/userAction";
-import cart from "../../../assets/image/search.svg";
+import carts from "../../../assets/image/search.svg";
 import Profil from "../../../assets/image/profil.png";
 import bell from "../../../assets/image/bell (1) 1.png";
 import mail from "../../../assets/image/mail (3) 1.png";
@@ -12,8 +12,10 @@ import axios from "axios";
 import "./style.css"
 import "../../module/home/StyleHome.css"
 import ModalFilter from "../modal/ModalFilter";
+import { getCart } from "../../../configs/redux/actions/bagAction";
 const NavbarBase = ({ onChange, onClick, src, srcCart }) => {
   const [user, setUser] = useState()
+  const { cart } = useSelector((state) => state.bag);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   console.log(user);
@@ -38,6 +40,7 @@ const NavbarBase = ({ onChange, onClick, src, srcCart }) => {
     });
   };
   useEffect(() => {
+    dispatch(getCart())
     datas();
   }, []);
 
@@ -52,6 +55,7 @@ const NavbarBase = ({ onChange, onClick, src, srcCart }) => {
         },
       }
     );
+    
     setUser(response.data.data);
     
   };
@@ -95,10 +99,10 @@ const NavbarBase = ({ onChange, onClick, src, srcCart }) => {
                       height: 40,
                     }}
                   >
-                    <img src={cart} alt="" className="icon-cart mb-2" />
-                    {/* <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                      {data.cart.length}
-                    </span> */}
+                    <img src={carts} alt="" className="icon-cart mb-2 " />
+                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                      {cart.length}
+                    </span>
                   </button>
                 </Link>
                 <img src={bell} alt="" className="icon-cart ms-2 mb-2" />

@@ -25,7 +25,15 @@ const DetailProduct = () => {
         title="You can also like this"
         subtitle="You’ve never seen it before!"
       />
-      <Footer/>
+      <div>
+      <footer className="py-3 bg-dark">
+        <div className="container">
+          <p className="m-0 text-center text-white">
+            Copyright &copy; Taryana 2022
+          </p>
+        </div>
+      </footer>
+    </div>
     </div>
   );
 }

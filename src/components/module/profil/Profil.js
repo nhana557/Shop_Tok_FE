@@ -40,6 +40,7 @@ const Profil = ({
         },
       }
     );
+    
     console.log(response.data.data);
     setUser(response.data.data);
   };

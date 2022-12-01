@@ -108,7 +108,7 @@ const EditProfil = () => {
           imgTwo={pekage}
           imgTheree={shoping}
         />
-        <div className="col-lg-9 profile-form pt-5">
+        <div className="col-lg-9 profile-form pt-5 mb-sm-5">
           <div className="card card-form">
             <div className="card-body">
               <h3 className="title-profil">My Profile</h3>
@@ -208,23 +208,6 @@ const EditProfil = () => {
                         </label>
                       </div>
                     </div>
-                    {/* <div className="mb-4 row">
-                      <label
-                        htmlFor="inputPassword"
-                        className="col-sm-3 col-form-label text-end text-form"
-                      >
-                        Date of birth
-                      </label>
-                      <div className="col-sm-6">
-                        <input
-                          value={date_of_brith}
-                          onChange={(e) => setDate_of_brith(e.target.value)}
-                          id="startDate"
-                          className="form-control"
-                          type="date"
-                        />
-                      </div>
-                    </div> */}
                     <div className="mb-3 row">
                       <div className="col-sm-9">
                         <button type="submit" className="btn btn-submit bg-success" onClick={onSubmit}>
@@ -241,7 +224,7 @@ const EditProfil = () => {
                     />
                     <div className="select-avatar mt-3">
                       <div className="fileUpload btn btn-light btn-select-profil appp">
-                        <span>Choase File</span>
+                        <span>Choose File</span>
                         <input
                           onChange={(e) => onImageUpload(e)}
                           names="photo"

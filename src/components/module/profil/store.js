@@ -152,7 +152,7 @@ export default function Store() {
                   />
                   <div className="select-avatar mt-3">
                     <div className="fileUpload btn btn-light btn-select-profil appp">
-                      <span>Choase File</span>
+                      <span>Choose File</span>
                       <input
                         onChange={(e) => onImageUpload(e)}
                         names="photo"

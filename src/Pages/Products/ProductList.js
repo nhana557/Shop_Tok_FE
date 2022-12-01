@@ -138,7 +138,6 @@ const ProductList = () => {
                       <th>Title</th>
                       <th>Price</th>
                       <th>stock</th>
-                      <th>Deskripsion</th>
                       <th>Merk</th>
                       <th>Condition</th>
                       <th>Image</th>
@@ -152,7 +151,6 @@ const ProductList = () => {
                         <td>{item.name}</td>
                         <td>{item.price}</td>
                         <td>{item.stock}</td>
-                        <td>{item.description}</td>
                         <td>{item.merk}</td>
                         <td>
                           {item.condition}

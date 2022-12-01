@@ -1,0 +1,23 @@
+{
+    "emmet.preferences": {
+        // "javascript": {
+        //         "abbreviations": {
+        //             "Log": "console.log",
+        //             "va": "var"
+        //         },
+        //         "snippets": {
+        //             "Log": "console.log",
+        //             "va": "var"
+        //         }
+        //     },
+    },
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact",
+        "vue-html": "html",
+        "plaintext": "html"
+    },
+    "emmet.excludeLanguages": [
+        "markdown",
+        "javascript"
+    ],
+}

@@ -25,7 +25,7 @@ function Populer() {
    }, []);
   return (
     <div>
-      <div className="container mb-5">
+      <div className="container mb-5 pb-5">
         <div className="row">
           <div className="products">
             <h3 className="products mt-5 mb-2 title">Populer</h3>

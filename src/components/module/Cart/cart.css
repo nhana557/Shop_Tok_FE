@@ -1,5 +1,6 @@
 .img-products{
-    border-radius: 3px;
+     border-radius: 3px;
+     margin-left: 20px;
      box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 .table{border-bottom:none #fff !important;}
@@ -84,6 +85,9 @@ line-height: 16px;
    }
 }
 @media (max-width: 576px) {
+  .img-products{
+    margin-left: 30px;
+  }
           /* versi mobile */
     .nav-search{
     /* background-color: red; */
