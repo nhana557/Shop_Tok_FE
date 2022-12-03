@@ -63,7 +63,7 @@ export const signUp = (dataForm, navigate) => async (dispatch) => {
      swal.fire({
        icon: "success",
        title: "Success Register",
-       text: "please login",
+       text: user.message,
      });
     navigate("/login");
   } catch (error) {

@@ -20,21 +20,20 @@ const Bag = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const dispatch = useDispatch();
-  const [qty, setQty] = useState(0);
+  const [qty, setQty] = useState(1);
   const [checked, setChecked] = useState(false);
-  let [totalHarga, setTotalHarga] = useState(0)
-  // let totalHarga = 0;
-  console.log(totalHarga)
+  // let [totalHarga, setTotalHarga] = useState([])
+  // console.log(totalHarga)
 
-  const calculation = () => {
-    // dispatch(getCart());
-    for (let i = 0; i < cart.length; i++) {
-      totalHarga += cart[i].price * cart[i].qty;
-    }
-  }
-  for (let i = 0; i < cart.length; i++) {
-    totalHarga += cart[i].price * cart[i].qty;
-  }
+  // const calculation = () => {
+  //   // dispatch(getCart());
+  //   for (let i = 0; i < cart.length; i++) {
+  //     totalHarga += cart[i].price * cart[i].qty;
+  //   }
+  // }
+  // for (let i = 0; i < cart.length; i++) {
+  //   totalHarga += cart[i].price * cart[i].qty;
+  // }
   
 
   // calculation()
@@ -47,12 +46,12 @@ const Bag = () => {
       });
         dispatch(getCart());
 
-      setQty(1);
+      setQty( qty + 1);
     } catch (error) {
       console.log(error);
     }
   };
-  console.log(qty);
+  // console.log(qty);
   const deleteCart = async (ID) => {
     try {
       console.log(ID)
@@ -84,6 +83,7 @@ const Bag = () => {
   useEffect(() => {
     dispatch(getCart());
   }, []);
+  let totalHarga = 0;
   
   return (
     <Fragment>
@@ -136,6 +136,27 @@ const Bag = () => {
                                   type="checkbox"
                                   value=""
                                   id="flexCheckDefault"
+                                  onChange={(e) =>{
+                                    console.log(e.target.checked)
+                                    // let totalHarga = 0;
+                                    console.log(item.price * item.qty)
+                                    dispatch(getCart());
+                                    
+                                    // console.log(totalHarga)
+                                    // for (let i = 0; i < cart.length; i++) {
+                                      if(e.target.checked === true){
+                                        setChecked(true)
+                                        for (let i = 0; i <= cart.length; i++) {
+                                          console.log(cart[0]);
+                                            totalHarga += cart[0].price * cart[0].qty;
+                                          }
+                                          console.log("Hasil", totalHarga);
+                                      }else{
+                                        // dispatch(getCart());
+                                        
+                                      }
+                                    // }
+                                  }}
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -178,7 +199,8 @@ const Bag = () => {
                               <button
                                 className="btn btn-light max"
                                 onClick={() => {
-                                  addQty(item.id);
+                                  addQty(item.id);      
+                                  dispatch(getCart());
                                 }}
                               >
                                 <img src={shape} alt="" className="icon-max" />
