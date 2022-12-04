@@ -68,7 +68,7 @@ const datas = async () => {
             <Link to="/Checkout">
               <button className="btn btn-light me-2">
                 <img src={carts} alt="" className="icon-cart m-auto" />
-                <span className="position-absolute top-50 start-50 translate-middle badge rounded-pill bg-success">
+                <span className="position-absolute top-25 mt-4 start-25 translate-middle badge rounded-pill bg-success">
                   {cart.length}</span>
               </button>
             </Link>

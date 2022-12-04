@@ -108,8 +108,8 @@ const EditProfil = () => {
           imgTwo={pekage}
           imgTheree={shoping}
         />
-        <div className="col-lg-9 profile-form pt-5 mb-sm-5">
-          <div className="card card-form">
+        <div className="col-lg-9 profile-form mt-5 pb-5">
+          <div className="card card-form ">
             <div className="card-body">
               <h3 className="title-profil">My Profile</h3>
               <p className="sub-profil text-secondary">
