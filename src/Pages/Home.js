@@ -9,24 +9,17 @@ import { useState } from "react";
 import "./style.css"
 import Carausel from "../components/module/home/Caraousel/Carausel";
 import NavbarAfterLogin from "../components/module/home/navbar/NavbarAfterLogin";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CarauselCategory from "../components/module/home/Caraousel/CarauselCategory";
-
-
+import { getProduct } from "../configs/redux/actions/productsActions";
 
 const Home = () => {
   const { user } = useSelector((state) => state.auth);
- console.log(user)
-  const [products, setProducts] = useState([]);
+  const { products } = useSelector((state) => state.allProducts);
+  console.log(products)
+  const dispatch = useDispatch()
   useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_BACKEND}products`)
-      .then( (response)=> {
-        setProducts(response.data.data);
-      })
-      .catch( (error)=> {
-        console.log(error);
-      });
+    dispatch(getProduct())
   }, []);
 
   return (
@@ -47,7 +40,7 @@ const Home = () => {
           </div>
           <div className="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-4 g-3 ">
             {products.map((item) => (
-              <div className="col" key={item.id}>
+              <div className="col " key={item.id}>
                 <Card
                   src={item.photo[0]}
                   to={`/detail/${item.id}`}

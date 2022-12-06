@@ -12,7 +12,7 @@ import axios from "axios";
 import "./style.css"
 import "../../module/home/StyleHome.css"
 import ModalFilter from "../modal/ModalFilter";
-import { getCart } from "../../../configs/redux/actions/bagAction";
+import { getCart } from "../../../configs/redux/actions/cartAction";
 const NavbarBase = ({ onChange, onClick, src, srcCart }) => {
   const [user, setUser] = useState()
   const { cart } = useSelector((state) => state.bag);

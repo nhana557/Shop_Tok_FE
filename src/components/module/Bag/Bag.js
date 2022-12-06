@@ -7,7 +7,7 @@ import Rectangle from "../../../assets/image/Rectangle 605.png";
 import shape from "../../../assets/image/Shape.png";
 import Total from "../Total/Total";
 import { useDispatch, useSelector } from "react-redux";
-import { getCart } from "../../../configs/redux/actions/bagAction";
+import { getCart } from "../../../configs/redux/actions/cartAction";
 import { useNavigate } from "react-router-dom";
 import { FormatRupiah } from "@arismun/format-rupiah";
 import axios from "axios";
@@ -22,6 +22,7 @@ const Bag = () => {
   const dispatch = useDispatch();
   const [qty, setQty] = useState(1);
   const [checked, setChecked] = useState(false);
+  let totalHarga = 0
   // let [totalHarga, setTotalHarga] = useState([])
   // console.log(totalHarga)
 
@@ -31,9 +32,9 @@ const Bag = () => {
   //     totalHarga += cart[i].price * cart[i].qty;
   //   }
   // }
-  // for (let i = 0; i < cart.length; i++) {
-  //   totalHarga += cart[i].price * cart[i].qty;
-  // }
+  for (let i = 0; i < cart.length; i++) {
+    totalHarga += cart[i].price * cart[i].qty;
+  }
   
 
   // calculation()
@@ -83,7 +84,6 @@ const Bag = () => {
   useEffect(() => {
     dispatch(getCart());
   }, []);
-  let totalHarga = 0;
   
   return (
     <Fragment>
@@ -136,27 +136,6 @@ const Bag = () => {
                                   type="checkbox"
                                   value=""
                                   id="flexCheckDefault"
-                                  onChange={(e) =>{
-                                    console.log(e.target.checked)
-                                    // let totalHarga = 0;
-                                    console.log(item.price * item.qty)
-                                    dispatch(getCart());
-                                    
-                                    // console.log(totalHarga)
-                                    // for (let i = 0; i < cart.length; i++) {
-                                      if(e.target.checked === true){
-                                        setChecked(true)
-                                        for (let i = 0; i <= cart.length; i++) {
-                                          console.log(cart[0]);
-                                            totalHarga += cart[0].price * cart[0].qty;
-                                          }
-                                          console.log("Hasil", totalHarga);
-                                      }else{
-                                        // dispatch(getCart());
-                                        
-                                      }
-                                    // }
-                                  }}
                                 />
                                 <span className="checkmark"></span>
                               </label>

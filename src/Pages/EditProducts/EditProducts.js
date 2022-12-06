@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch } from "react-redux";
-import updateProduct from "../../configs/redux/actions/updateProduct";
+import { updateProducts } from "../../configs/redux/actions/productsActions";
 
 const ModalEdit = ({
   id,
@@ -43,7 +43,7 @@ const ModalEdit = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateProduct(data, id, saveImage, setShow))
+    dispatch(updateProducts(data, id, saveImage, setShow))
   };
 
   return (

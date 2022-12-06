@@ -6,7 +6,7 @@ import { useParams, Link,useNavigate } from "react-router-dom";
 import retanggle from "../../../../assets/image/detail products/Rectangle 21.png";
 import shape from "../../../../assets/image/detail products/Shape (1).png";
 import './StyleDetail.css'
-import { addMycart } from "../../../../configs/redux/actions/bagAction";
+import { addMycart } from "../../../../configs/redux/actions/cartAction";
 import {FormatRupiah} from "@arismun/format-rupiah"
 import axios from "axios"
 import { useDispatch } from "react-redux";

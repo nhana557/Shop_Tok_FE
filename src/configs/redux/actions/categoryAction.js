@@ -1,12 +1,11 @@
 import axios from "axios"
 import {ActionTypes} from "../constants/action-types"
-export const getCategory =
-  () =>
+export const getCategory = (id) =>
   async (dispacth) => {
     try {
       dispacth({ type: ActionTypes.GET_CATEGORY_PENDING });
       const data  = await axios
-        .get(`${process.env.REACT_APP_API_BACKEND}category`)
+        .get(`${process.env.REACT_APP_API_BACKEND}/category?search=${id}`)
         console.log(data)
       dispacth({
         type: ActionTypes.GET_CATEGORY_SUCCESS,
@@ -19,9 +18,6 @@ export const getCategory =
       });
     }
     };
-  
-
-
     export const getCategorys = () => async (dispatch) => {
       dispatch({ type: ActionTypes.GET_CATEGORY_PENDING });
       const data = await axios

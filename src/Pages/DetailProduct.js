@@ -11,7 +11,6 @@ import { useSelector } from "react-redux";
 
 const DetailProduct = () => {
   const { user } = useSelector((state) => state.auth);
-
   return (
     <div>
       {user === undefined ? (

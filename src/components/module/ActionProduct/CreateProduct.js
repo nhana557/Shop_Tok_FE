@@ -10,9 +10,9 @@ import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
 import axios from "axios";
 import { faEraser } from "@fortawesome/free-solid-svg-icons";
-import createProducts from "../../../configs/redux/actions/createProduct";
+// import createProducts from "../../../configs/redux/actions/createProduct";
 import Swal from "sweetalert2";
-// import { createProduct } from "../../../configs/redux/actions/productsActions";
+import { createProducts } from "../../../configs/redux/actions/productsActions";
 const CreateProduct = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
@@ -69,7 +69,6 @@ const CreateProduct = () => {
     Swal.fire({
       title: "Now loading",
       allowEscapeKey: false,
-      imageUrl: "images/ajaxloader.gif",
       allowOutsideClick: false,
       showConfirmButton: false,
     });

@@ -12,7 +12,7 @@ import axios from "axios";
 import ModalFilter from "../../../base/modal/ModalFilter";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getCart } from "../../../../configs/redux/actions/bagAction";
+import { getCart } from "../../../../configs/redux/actions/cartAction";
 
 const NavbarAfterLogin = () => {
   const navigate = useNavigate();

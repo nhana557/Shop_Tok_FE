@@ -6,9 +6,8 @@ const Card = ({src, to, titleName, price, merk, onClick}) => {
     return onClick
   }, [])
   return (
-    <div className='card1'>
-      <div className="card shadow-sm ">
-        <img src={src} className="img-fluid img" alt="picture" />
+    <div className='card'>
+        <img src={src} className="img" alt="picture" />
         <div className="card-body">
           <h5 className="card-title" onClick={onClick}>
             <Link to={to}>{titleName}</Link>
@@ -23,7 +22,6 @@ const Card = ({src, to, titleName, price, merk, onClick}) => {
             <div className="bi-star-fill"></div>
             <p className="rating  mt-2 ms-1 text-dark">(10)</p>
           </div>
-        </div>
       </div>
     </div>
   );

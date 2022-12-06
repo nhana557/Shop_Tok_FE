@@ -4,25 +4,15 @@ import axios from "axios";
 import Card from "../../../base/Card";
 import { FormatRupiah } from "@arismun/format-rupiah";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getProduct } from "../../../../configs/redux/actions/productsActions";
 
 
 const Product = ({ title, subtitle }) => {
-  const [products, setProducts] = useState([]);
-  const navigate = useNavigate()
-  
-  const navigation = (id) =>{
-    navigate(`/detail/${id}`)
-    window.location.reload();
-  }
+  const {products} = useSelector(state => state.allProducts)
+  const dispatch = useDispatch()
   useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_BACKEND}products`)
-      .then( (response)=> {
-        setProducts(response.data.data);
-      })
-      .catch( (error)=> {
-        console.log(error);
-      });
+    dispatch(getProduct())
   }, []);
  
 

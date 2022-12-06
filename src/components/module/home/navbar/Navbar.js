@@ -13,10 +13,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Dropdown } from "react-bootstrap";
 import axios from "axios"
 import { signOut } from "../../../../configs/redux/actions/userAction";
-import { getCart } from '../../../../configs/redux/actions/bagAction';
+import { getCart } from '../../../../configs/redux/actions/cartAction';
 
 
-const Navbar = ({ onChange }) => {
+const Navbar = () => {
 // const { user } = useSelector((state) => state.auth);
 const dispatch = useDispatch();
 const { cart } = useSelector((state) => state.bag)
@@ -51,7 +51,6 @@ const datas = async () => {
         src={logo}
         srcFilter={filter}
         srcCart={cart}
-        onChange={onChange}
       ></NavbarBase>
       <nav className="footer-nav bg-ligth card text-center fixed-bottom ">
         {/* {user?.id ? ( */}

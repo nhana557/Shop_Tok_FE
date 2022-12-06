@@ -11,30 +11,6 @@ import { Dropdown } from "react-bootstrap";
 
 const MyProducts = () => {
   const [counter, setCounter] = useState(1);
-
-  // const [searchParams, setSearchParams] = useSearchParams([]);
-  // const [products, setProduct] = useState([])
-  // const getProducts = async () => {
-  //   axios
-  //     .get(
-  //       `http://localhost:5000/products?${searchParams}`
-  //     )
-  //     .then((res) => {
-  //       console.log(res.data.data);
-  //       setProduct(res.data.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-  //   useEffect(() => {
-  
-  //     getProducts();
-  //     searchParams.get("search");
-  //   }, [ searchParams ]);
-  //   console.log(getProducts)
-  const [show, setShow] = useState(false);
-  // const handleHide = () => setShow(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const [sort, setSort] = useState("");
   const [search, setSearch] = useState("");
@@ -43,7 +19,6 @@ const MyProducts = () => {
   console.log(pagination)
   const handleSort = (e) => {
     setSort(e.currentTarget.value);
-   
   };
  
   function getData() {
@@ -79,17 +54,15 @@ const MyProducts = () => {
       console.log(counter);
     };
     
-  const previos = () => {
-           setCounter(counter <= 1 ? 1 : counter - 1);
-           getPagination()
-       };
+  const previous = () => {
+      setCounter(counter <= 1 ? 1 : counter - 1);
+      getPagination()
+  };
     
  
   useEffect(() => {
     getData()
-    setSearch(searchParams.get("search"))
     searchParams.get("search")
-    searchParams.get("sort")
   }, [searchParams, sort ])
  
 
@@ -141,8 +114,8 @@ const MyProducts = () => {
             )}
           </div>
           <div className=" mt-5 d-flex justify-content-evenly">
-            <button className="btn btn-primary me-5 w-25" onClick={previos}>
-              Previos
+            <button className="btn btn-primary me-5 w-25" onClick={previous}>
+            previous
             </button>
             <p className="mx-auto ">
               {pagination.currentPage}/{pagination.totalPage}

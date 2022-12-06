@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FormatRupiah } from "@arismun/format-rupiah";
 import { Modal, Button, Form } from "react-bootstrap";
 import Select from "react-select";
-import { getCart } from "../../../configs/redux/actions/bagAction";
+import { getCart } from "../../../configs/redux/actions/cartAction";
 import axios from "axios";
 
 const Checkout = () => {

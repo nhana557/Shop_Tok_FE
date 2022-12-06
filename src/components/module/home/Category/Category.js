@@ -5,23 +5,23 @@ import './style.css'
 import { useParams } from "react-router-dom";
 import Card from "../../../base/Card";
 import { FormatRupiah } from "@arismun/format-rupiah";
-
+import { getCategory } from '../../../../configs/redux/actions/categoryAction'
 
 const Category = () => {
   const { id } = useParams()
-  // const {category}  = useSelector((state) => state.getCategory);
+  const { category }  = useSelector((state) => state.getCategory);
+  const dispatch = useDispatch();
   // console.log(category);
-  //  const dispatch = useDispatch();
-  const [data, setData] = useState([])
-  const fetch = async() =>{
-    const result = await axios.get(`${process.env.REACT_APP_API_BACKEND}/category?search=${id}`)
+  // const [data, setData] = useState([])
+  // const fetch = async() =>{
+  //   const result = await axios.get(`${process.env.REACT_APP_API_BACKEND}/category?search=${id}`)
 
-    setData(result.data.data)
-  }
-  console.log(data)
+  //   setData(result.data.data)
+  // }
+  console.log(category)
    useEffect(() => {
     fetch()
-      // dispatch(getCategory());
+      dispatch(getCategory(id));
      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
   return (
@@ -94,7 +94,7 @@ const Category = () => {
             <p className="mt-5 mb-2 title"><a href="/home" className="fs-5 title">product</a> {"> Category > "} {id}</p>
           </div>
           <div className="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-4 g-3">
-            {data.map((item) => (
+            {category.map((item) => (
               <div className="col" key={item.id}>
                 <Card
                   src={item.photo[0]}

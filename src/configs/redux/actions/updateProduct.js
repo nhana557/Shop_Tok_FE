@@ -8,8 +8,6 @@ import Swal from "sweetalert2";
         formData.append("stock", data.stock)
         formData.append("price", data.price)
         formData.append("description", data.description)
-        // formData.append("category_id", data.category_id)
-        // formData.append("transaksi_id", data.transaksi_id)
         formData.append("image", Image)
         formData.append('merk', data.merk)
         const products = await axios.put(`${process.env.REACT_APP_API_BACKEND}products/${id}`, formData, {

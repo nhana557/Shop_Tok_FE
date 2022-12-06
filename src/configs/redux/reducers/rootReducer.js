@@ -2,32 +2,15 @@ import {combineReducers} from 'redux'
 import {userReducer} from './userReducer'
 import { Profile } from './userReducer'
 // import { UpdateUserReducer } from "./userReducer";
-import {
-  productsReducer,
-  CreateproductsReducer,
-  selectedProductsReducer,
-  DeleteProductsReducer,
-  UpdateProductsReducer,
-  productReducer,
-  dataProducts,
-} from "./productsReducer";
-import { cartReducer, todosReducer } from "./cartReducer";
+import { productsReducer } from "./productsReducer";
+import { cartReducer } from "./cartReducer";
 import { categoryReducer } from "./categoryReducer";
-import bagReducer from "./bagReducer";
 const rootReducer = combineReducers({
-  // profile: Profile,
   auth: userReducer,
-  Createproducts: CreateproductsReducer,
   allProducts: productsReducer,
-  dataProduct: dataProducts,
-  products: productReducer,
-  carts: cartReducer,
-  todo: todosReducer,
-  deleteProduct: DeleteProductsReducer,
-  product: selectedProductsReducer,
-  updateProduct: UpdateProductsReducer,
+  bag: cartReducer,
   getCategory: categoryReducer,
-  bag: bagReducer,
+  // bag: bagReducer,
 });
 
 export default rootReducer

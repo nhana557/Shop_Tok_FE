@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "./styleCreate.css";
 import Profil from "../profil/Profil";
-
 import { useDispatch, useSelector } from "react-redux";
 import { updateProduct } from "../../../configs/redux/actions/productsActions";
 

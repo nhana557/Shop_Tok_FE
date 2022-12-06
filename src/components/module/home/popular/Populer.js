@@ -8,7 +8,7 @@ import { FormatRupiah } from "@arismun/format-rupiah";
 import { setProducts } from "../../../../configs/redux/actions/productsActions";
 
 function Populer() {
-   const products = useSelector((state) => state.allProducts.products);
+   const {products} = useSelector((state) => state.allProducts);
    console.log(products)
    const dispatch = useDispatch();
 
@@ -18,7 +18,7 @@ function Populer() {
        .catch((err) => {
          console.log(err);
        });
-     dispatch(setProducts(response.data.data));
+    //  dispatch(setProducts(response.data.data));
    };
    useEffect(() => {
      fetchProducts();
