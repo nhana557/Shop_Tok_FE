@@ -20,7 +20,7 @@ const ModalEdit = ({
   const [saveImage, setSaveImage]  = useState(photo);
   function handleUpload(e) {
     console.log(e.target.files[0]);
-    const uploader = e.target.files[0];
+    const uploader = e.target.files;
     setSaveImage(uploader);
   }
   const [data, setData] = useState({

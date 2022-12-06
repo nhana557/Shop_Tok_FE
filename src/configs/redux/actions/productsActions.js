@@ -67,7 +67,9 @@ export const updateProducts = (data, id, Image, setShow) => async (dispacth) =>{
       formData.append("stock", data.stock)
       formData.append("price", data.price)
       formData.append("description", data.description)
-      formData.append("image", Image)
+      for(let img of Image){
+        formData.append("image", img)
+      }
       formData.append('merk', data.merk)
       const products = await axios.put(`${process.env.REACT_APP_API_BACKEND}products/${id}`, formData, {
           header:{

@@ -68,7 +68,7 @@ const Content = () => {
           <div className="row mt-3">
             <div className="col-lg-5">
               <div className="galleries">
-                <div className="galleries-container">
+                <div className="galleries-container card">
                     <img src={products?.photo ? products.photo[0] : products.photo} 
                       className="w-100 " alt="" id="jumbo"/>
                 </div>
@@ -78,7 +78,7 @@ const Content = () => {
                       <span
                       key={index}
                       href="#"
-                      className="me-4 "
+                      className="me-4"
                   >
                     <img src={image} alt="" className="img"
                     onClick={(e) =>{
