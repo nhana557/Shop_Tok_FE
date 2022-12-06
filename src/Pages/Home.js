@@ -24,7 +24,7 @@ const Home = () => {
 
   return (
     <div>
-      {user ? (
+      {user?.id ? (
         <NavbarAfterLogin />
         ) : (
           <Navbar /> 
