@@ -13,7 +13,6 @@ const MyProducts = () => {
   const [counter, setCounter] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
   const [sort, setSort] = useState("");
-  const [search, setSearch] = useState("");
   const [products, setProducts] = useState([]);
   const [pagination, setPagination] = useState([])
   console.log(pagination)
@@ -25,7 +24,7 @@ const MyProducts = () => {
     const searching = searchParams.get("search") === null ? "" : searchParams.get("search");
     axios
     .get(
-      `${process.env.REACT_APP_API_BACKEND}products?search=${searching}&sort=${sort}`
+      `${process.env.REACT_APP_API_BACKEND}products?search=${searching}&sort=${sort}&page=${counter}`
     )
     .then((response) => {
         setProducts(response.data.data);
@@ -36,34 +35,24 @@ const MyProducts = () => {
         console.log(error);
       });
   }
-  const getPagination = async() =>{
-    try {
-      const result = await axios.get(`${process.env.REACT_APP_API_BACKEND}products?page=${counter}`)
-      setProducts(result.data.data)
-      setPagination(result.data.pagination)
-
-    } catch (error) {
-      console.log(error)
-    }
-}
   const next = () => {
     setCounter(
       counter === pagination.totalPage ? pagination.totalPage : counter + 1
       );
-      getPagination()
+      getData()
       console.log(counter);
     };
     
   const previous = () => {
       setCounter(counter <= 1 ? 1 : counter - 1);
-      getPagination()
+      getData()
   };
     
  
   useEffect(() => {
     getData()
     searchParams.get("search")
-  }, [searchParams, sort ])
+  }, [searchParams ])
  
 
   return (
