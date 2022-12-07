@@ -33,16 +33,19 @@ export const CreateproductsReducer = (state = intialState, { type, payload }) =>
       return state;
   }
 };
-export const dataProducts = (state = inisial, action) => {
-  switch (action.type) {
-    case ActionTypes.UPDATE_PAGE:
-      return { ...state, pagination: action.payload };
-    case ActionTypes.SET_PRODUCTS:
-      return { ...state, products: action.payload };
+
+export const productReducer = (state = intialState, {type, payload}) =>{
+  switch(type) {
+    case "GET_DETAIL_SUCCESS":
+        return {
+          ...state,
+          products: payload,
+          isLoading: false
+        }
     default:
-      return state;
+      return state
   }
-};
+}
 
 export const productsReducer = (state = inisial, action) => {
   switch (action.type) {

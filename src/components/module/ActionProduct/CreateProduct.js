@@ -44,7 +44,7 @@ const CreateProduct = () => {
       [e.target.name]: e.target.value,
     });
   };
-  const { isLoading } = useSelector((state) => state.Createproducts);
+  // const { isLoading } = useSelector((state) => state.Createproducts);
   const { user } = useSelector((state) => state.auth);
   console.log(user);
   const dispatch = useDispatch();
@@ -421,7 +421,7 @@ const CreateProduct = () => {
           <div className="mt-3">
             <div className="col-sm-12 text-end">
               <button className="btn btn-jual" type="submit">
-                {isLoading ? "Loading..." : "Jual"}
+                {"Jual"}
               </button>
             </div>
           </div>

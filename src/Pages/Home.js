@@ -16,7 +16,6 @@ import { getProduct } from "../configs/redux/actions/productsActions";
 const Home = () => {
   const { user } = useSelector((state) => state.auth);
   const { products } = useSelector((state) => state.allProducts);
-  console.log(products)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getProduct())

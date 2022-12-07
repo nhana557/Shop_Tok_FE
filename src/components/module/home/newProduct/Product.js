@@ -1,21 +1,17 @@
 import React, { useEffect, useState} from "react";
 import "../StyleHome.css";
-import axios from "axios";
 import Card from "../../../base/Card";
 import { FormatRupiah } from "@arismun/format-rupiah";
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../../../../configs/redux/actions/productsActions";
 
 
 const Product = ({ title, subtitle }) => {
-  const {products} = useSelector(state => state.allProducts)
+  const { products } = useSelector(state => state.allProducts)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getProduct())
   }, []);
- 
-
   return (
     <div>
       <div className="container mb-5">

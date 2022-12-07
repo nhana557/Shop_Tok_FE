@@ -5,23 +5,14 @@ import axios from "axios";
 import Card from "../../../base/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { FormatRupiah } from "@arismun/format-rupiah";
-import { setProducts } from "../../../../configs/redux/actions/productsActions";
+import { getProduct, setProducts } from "../../../../configs/redux/actions/productsActions";
 
 function Populer() {
-   const {products} = useSelector((state) => state.allProducts);
+   const { products } = useSelector((state) => state.allProducts);
    console.log(products)
    const dispatch = useDispatch();
-
-   const fetchProducts = async () => {
-     const response = await axios
-       .get(`${process.env.REACT_APP_API_BACKEND}products`)
-       .catch((err) => {
-         console.log(err);
-       });
-    //  dispatch(setProducts(response.data.data));
-   };
    useEffect(() => {
-     fetchProducts();
+    dispatch(getProduct)
    }, []);
   return (
     <div>

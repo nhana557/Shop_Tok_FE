@@ -11,83 +11,12 @@ const Category = () => {
   const { id } = useParams()
   const { category }  = useSelector((state) => state.getCategory);
   const dispatch = useDispatch();
-  // console.log(category);
-  // const [data, setData] = useState([])
-  // const fetch = async() =>{
-  //   const result = await axios.get(`${process.env.REACT_APP_API_BACKEND}/category?search=${id}`)
-
-  //   setData(result.data.data)
-  // }
   console.log(category)
    useEffect(() => {
     fetch()
       dispatch(getCategory(id));
-     // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
   return (
-    // <div>
-    //   <div className="container">
-    //     <div className="mt-5" id="custom-cards">
-    //       <h2 className="title ">Category</h2>
-    //       <p className="sub-category">What are you currently looking for</p>
-    //       <div className="row row-cols-2 row-cols-lg-5 align-items-center g-5 ">
-    //         <div className="col categories categories1">
-    //           <div className="card card-1 text-center d-flex flex-colum ">
-    //             <div className="card-body m-2">
-    //               <img src={Tshirt} alt="picture" className="img-fluid" />
-    //               <div className="card-img-overlay text-white d-flex justify-content-center align-items-center">
-    //                 <a href="/category/{category[0].id}" >
-    //                 <p className="font-category"></p>
-    //                 </a>
-    //               </div>
-    //             </div>
-    //           </div>
-    //         </div>
-    //         <div className="col categories">
-    //           <div className="card card-2 text-center d-flex flex-colum">
-    //             <div className="card-body m-2">
-    //               <img src={komputer} alt="picture" className="img-fluid" />
-    //               <div className="card-img-overlay text-white d-flex justify-content-center align-items-center">
-    //                 <p className="font-category"></p>
-    //               </div>
-    //             </div>
-    //           </div>
-    //         </div>
-    //         <div className="col categories">
-    //           <div className="card card-3 text-center d-flex flex-colum">
-    //             <div className="card-body m-2">
-    //               <img src={jacket} alt="picture" className="img-fluid" />
-    //               <div className="card-img-overlay text-white d-flex justify-content-center align-items-center">
-    //                 <p className="font-category"></p>
-    //               </div>
-    //             </div>
-    //           </div>
-    //         </div>
-    //         <div className="col categories">
-    //           <div className="card card-4 text-center d-flex flex-colum">
-    //             <div className="card-body m-2">
-    //               <img src={jeans} alt="picture" className="img-fluid" />
-    //               <div className="card-img-overlay text-white d-flex justify-content-center align-items-center">
-    //                 <p className="font-category"></p>
-    //               </div>
-    //             </div>
-    //           </div>
-    //         </div>
-    //         <div className="col categories">
-    //           <div className="card card-5 text-center d-flex flex-colum">
-    //             <div className="card-body m-2">
-    //               <img src={sepatu} alt="picture" className="img-fluid" />
-    //               <div className="card-img-overlay text-white d-flex justify-content-center align-items-center">
-    //                 <p className="font-category"></p>
-    //               </div>
-    //             </div>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
-    // <div>
       <div className="container mt-4">
         <div className="row">
           <div className="pt-4 fs-5">

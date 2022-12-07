@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import "./StyleDetail.css";
-// import axios from "axios";
 import { useParams, Link,useNavigate } from "react-router-dom";
 import retanggle from "../../../../assets/image/detail products/Rectangle 21.png";
 import shape from "../../../../assets/image/detail products/Shape (1).png";
@@ -9,28 +8,16 @@ import './StyleDetail.css'
 import { addMycart } from "../../../../configs/redux/actions/cartAction";
 import {FormatRupiah} from "@arismun/format-rupiah"
 import axios from "axios"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductDetail } from "../../../../configs/redux/actions/productsActions";
 
 const Content = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { id } = useParams()
-  const [products, setProducts] = useState([]);
-  
-  console.log(products)
-  const fetch = () =>{
-    axios
-      .get(`${process.env.REACT_APP_API_BACKEND}products/${id}`)
-      .then( (response)=> {
-        setProducts(response.data.data[0]);
-      })
-      .catch( (error)=> {
-        console.log(error);
-      });
-  }
-  // fetch()
+   const{ products } = useSelector(state => state.products)
   useEffect(() => {
-    fetch()
+    dispatch(getProductDetail(id))
   }, []);
   const handleAddBag = async (detailProductId, navigate, buy = false) => {
     const id = localStorage.getItem('id')
@@ -39,8 +26,7 @@ const Content = () => {
       user_id: id,
     };
 
-    dispatch(addMycart(data, navigate, buy))
-    // ;
+    dispatch(addMycart(data, navigate, buy));
   };
    const [count, setCount] = useState(1);
    const handleSum = () => {
@@ -58,12 +44,6 @@ const Content = () => {
    };
   return (
     <div>
-      {/* {(products.data).length === 0 ? (
-        <div class="text-center">
-          <FontAwesomeIcon icon={faSpinner} spin />
-          &nbsp;Loading
-        </div>
-      ) : ( */}
         <div className="container child-page">
           <div className="row mt-3">
             <div className="col-lg-5">
@@ -187,7 +167,6 @@ const Content = () => {
             </div>
           </div>
         </div>
-      {/* )} */}
     </div>
   );
 };

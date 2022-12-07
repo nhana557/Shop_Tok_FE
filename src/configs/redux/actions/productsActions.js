@@ -13,6 +13,18 @@ export const getProduct = () => async(dispacth) =>{
     console.log(error)
   }
 } 
+
+export const getProductDetail = (id) => async(dispatch) =>{
+  try {
+    const res = await axios.get(`${process.env.REACT_APP_API_BACKEND}/products/${id}`)
+    const products = res.data.data[0]
+
+    dispatch({type: "GET_DETAIL_SUCCESS", payload: products})
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export  const createProducts = (data, Image, setShow) => async(dispatch) => {
     try{
         const id = localStorage.getItem('id')

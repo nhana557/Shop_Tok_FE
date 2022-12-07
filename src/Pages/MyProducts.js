@@ -7,8 +7,6 @@ import "./style.css"
 import "../Pages/Page404/page.css"
 import { Dropdown } from "react-bootstrap";
 
-
-
 const MyProducts = () => {
   const [counter, setCounter] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
